@@ -1,4 +1,4 @@
-/packages
-/artifacts
+packages/
+artifacts/
 *.exe
-/node_modules
+node_modules/
