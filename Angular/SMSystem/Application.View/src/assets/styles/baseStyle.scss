@@ -1,0 +1,42 @@
+
+    .mat-card{
+        background-color:rgba(205, 205, 218, 0.6);
+        color: black;
+        margin-top: 20px;
+        text-align: center;
+
+        h4{
+            color: black;
+        }
+        .mat-input-element{
+            color: black;
+        }
+        .mat-raised-button{
+            color: black;
+            margin-top: 20px;
+        }
+
+        .fullwidth{
+            width: 100%;
+        }
+        
+        label{
+            color: black;
+        }
+       
+    }
+
+    table{
+        th,td{
+            padding: 3px;
+        }
+        td{
+            text-align:  center;
+        }
+        .mat-raised-button{
+            color: white;
+            background-color: blue;
+            
+            
+        }
+    }

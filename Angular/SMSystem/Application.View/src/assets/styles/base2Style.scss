@@ -1,0 +1,66 @@
+
+.text-muted{
+    color: red;
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+.mat-raised-button{
+    background-color: blue;
+    color: white;
+}
+
+#maincontent{
+    margin-top: 20px;
+}
+
+.subnav{
+background-color: #ff4081;
+
+.mat-input-element{
+    color: white;
+    font-weight: bold;
+}
+}
+
+#searchbar 
+    {
+        display: flex;
+        div{
+            flex:1;
+
+            label{
+                color:white;
+                font-style: italic;
+            }
+        }
+}
+
+table{
+    th,td{
+        padding: 3px;
+    }
+    border-collapse: separate;
+}
+
+.expand{
+    display: flex;
+
+    div{
+        flex: 1;
+    }
+}
+
+.flex-container{
+    display: flex;
+
+    .flex-container-item{
+        flex: 1;
+        margin-right: 5px;
+    }
+
+    margin-bottom: 10px;
+}
+

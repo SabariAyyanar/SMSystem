@@ -1,0 +1,298 @@
+
+        <mat-card-content color="primary" class="subnav">
+          <div class="container" id="searchbar">
+          <div>
+              <label for="searchcategory">Category</label>
+
+              <mat-form-field>
+                  <mat-select  (ngModelChange)="filterobject()" matTooltip="Employee Category To Filter" 
+                  [(ngModel)]="search.category" name="searchcategory">  
+                    <mat-option *ngFor="let currentcategory of employeecategory" [value]="currentcategory.Id">
+                      {{currentcategory.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+            </div>
+            <div>
+                <label for="searchdepartment" #lab>Department</label>
+
+                <mat-form-field>
+                    <mat-select   matTooltip="Employee Department To Filter"
+                     [(ngModel)]="search.department" name="searchempdepartment" (ngModelChange)="filterobject()"> 
+                      <mat-option *ngFor="let currentdepartment of department" [value]="currentdepartment.Id">
+                        {{currentdepartment.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+              </div>
+              <div>
+                  <label for="searchemployee">Employee Name</label>
+                  <mat-input-container>
+                      <input matInput (keyup) = "filterobject()" matTooltip="Filter Employee name" id="searchemployee" [(ngModel)]="search.name" name="searchemployee">
+                    </mat-input-container>
+                  </div>
+                </div>
+        </mat-card-content>
+        
+    <div class="container" id="maincontent">
+      <div class="row">
+        <form (ngSubmit) = "saveNewEmployee()" #employeeform="ngForm" >
+          <div class="col-lg-10">
+            <table cellspacing="0" class="fullwidth">
+                <tr>
+                    <td>
+                      <mat-input-container>
+                        <input matInput placeholder="Employee ID" matTooltip="ID to be given to Employee" id="employeeId" [(ngModel)]="employeeincontext.Id" name="employeeId">
+                      </mat-input-container>
+                    </td>                
+                  <td >
+                      <mat-radio-group required="" [(ngModel)]="employeeincontext.gender" matTooltip="Gender of student" #gender="ngModel" name="gender">
+                          <mat-radio-button value="male" name="male">Male</mat-radio-button>
+                          <mat-radio-button  value="female" name="female">Female</mat-radio-button>
+                        </mat-radio-group>
+                  </td>
+                  <td>
+                    <mat-input-container>
+                      <input matInput required="" #firstname="ngModel" placeholder="First Name" matTooltip="First name of Employee" id="firstname" [(ngModel)]="employeeincontext.firstname" name="firstname">
+                    </mat-input-container>
+                  </td>
+                  <td>
+                      <mat-input-container>
+                        <input matInput placeholder="last Name" required="" #lastname="ngModel" matTooltip="Family name of Employee" id="lasttname" [(ngModel)]="employeeincontext.lastname" name="lastname">
+                      </mat-input-container>
+                    </td>
+                  </tr>
+              <tr>
+                  <td>                      
+                    <mat-input-container>
+                        <textarea matInput placeholder="Address" matTooltip="address of residence" #address id="address" [(ngModel)]="employeeincontext.address" name="address">
+                          </textarea>                      
+                        <mat-hint align="end">
+                          143/C2 or P.O.Box
+                        </mat-hint>
+                    </mat-input-container>                  
+                  </td>
+                  <td>
+                      <mat-form-field>
+                        <input matTooltip="Employee Date Of Birth" required="" #mydatepicker="ngModel" placeholder="Date Of Birth" name="dateofbirth" [(ngModel)]="employeeincontext.dateofbirth" matInput [matDatepicker]="myDatepicker">
+                        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #myDatepicker>Select</mat-datepicker>            
+                      </mat-form-field>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                          <mat-select placeholder="Category" #employeecategorys="ngModel" required="" matTooltip="category to be added" [(ngModel)]="employeeincontext.categoryId" name="employeecategory">  
+                            <mat-option *ngFor="let currentcategory of employeecategory" [value]="currentcategory.Id">
+                              {{currentcategory.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-form-field>
+                          <mat-select  placeholder="Department" #departments="ngModel" required="" matTooltip="Department to join" [(ngModel)]="employeeincontext.departmentId" name="schooldepartment"> 
+                            <mat-option *ngFor="let currentdepartment of department" [value]="currentdepartment.Id">
+                              {{currentdepartment.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-input-container>
+                            <input matInput placeholder="Mother's Name" matTooltip="Name of student mother" id="mothername" [(ngModel)]="employeeincontext.mothername" name="mothername">
+                          </mat-input-container>
+                    </td>
+                    <td>
+                        <mat-input-container>
+                        <input matInput placeholder="Father's Name" matTooltip="Name of student father" id="fathername" [(ngModel)]="employeeincontext.fathername" name="fathername">
+                        </mat-input-container>
+                    </td>
+                    <td>
+                      <mat-form-field>
+                          <mat-select  placeholder="Region" matTooltip="Region of residence" [(ngModel)]="employeeincontext.regionId" name="region"> 
+                            <mat-option *ngFor="let currentregion of region" [value]="currentregion.Id">
+                              {{currentregion.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </td>
+                  <td>
+                      <mat-input-container>
+                         <input matInput placeholder="City" matTooltip="City of residence" id="city" [(ngModel)]="employeeincontext.city" name="city">
+                       </mat-input-container>
+                  </td>
+                </tr>
+              <tr>                
+                <td>
+                    <mat-input-container>
+                        <input matInput placeholder="Place Of Birth" matTooltip="Place Employee was born" id="placeofbirth" [(ngModel)]="employeeincontext.placeofbirth" name="placeofbirth">
+                    </mat-input-container>
+                </td>
+                  <td>
+                      <mat-input-container>
+                        <input matInput placeholder="Contact Number" required="" matTooltip="phone number of Employee" #phone="ngModel" id="phone" [(ngModel)]="employeeincontext.phone" name="phone">
+                          <mat-hint align="end">
+                            233571683961
+                          </mat-hint>
+                      </mat-input-container>
+                  </td>
+                  <td>
+                      <mat-input-container>
+                        <input matInput placeholder="Email Address" matTooltip="email of Employee" #email id="email" [(ngModel)]="employeeincontext.email" name="eamil">
+                          <mat-hint align="end">
+                            example@gmail.com
+                          </mat-hint>
+                      </mat-input-container>
+                  </td>
+                   <td>
+                    <mat-form-field>
+                        <mat-select  placeholder="Level Of Education" matTooltip="Level of Education" name="employeelevelofeducation" [(ngModel)]="employeeincontext.levelofeducationId"> 
+                          <mat-option *ngFor="let currentlevelofeducation of levelofeducation" [value]="currentlevelofeducation.Id">
+                            {{currentlevelofeducation.name}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-hint align="end">
+                            Level Of Education
+                          </mat-hint>
+                      </mat-form-field>
+                </td>
+              </tr>
+              <tr>                    
+                        <td>
+                            <mat-input-container>
+                                <input matInput placeholder="Area Of Expertise" matTooltip="Area of expertise/subject" [(ngModel)]="employeeincontext.areaofexpertise" id="areaofexpertise"  name="areaofexpertise">
+                                  <mat-hint align="end">
+                                    Expertise/Subject field
+                                  </mat-hint>
+                              </mat-input-container>
+                        </td>
+                        <td>
+
+                            <mat-form-field>
+                                <mat-select  placeholder="Class To Teach" matTooltip="class to teach"  name="classtoteach"
+                                [(ngModel)]="employeeincontext.classtoteachId"> 
+                                  <mat-option *ngFor="let currentclass of allstudentclass" [value]="currentclass.Id">
+                                    {{currentclass.name}}
+                                  </mat-option>
+                                </mat-select>
+                                <mat-hint align="end">
+                                    Class To Teach
+                                  </mat-hint>
+                              </mat-form-field>
+                      </td>
+                      <td>
+                        <mat-input-container>
+                            <input matInput numberonly="true" placeholder="years of experience" matTooltip="years of experience" [(ngModel)]="employeeincontext.yearsofexperience" id="yearsofexperience"  name="yearsofexperience">
+                          </mat-input-container>
+                    </td>
+                    <td>
+                      <mat-input-container>
+                          <input matInput numberonly="true" placeholder="salary" matTooltip="Employee Salary" [(ngModel)]="employeeincontext.salary" id="salary"  name="salary">
+                        </mat-input-container>
+                  </td>                                          
+                </tr>
+                <tr>
+                    <td>
+                        <mat-input-container>
+                            <input matInput numberonly="true" placeholder="Working hours" matTooltip="Working hours of employee"
+                             [(ngModel)]="employeeincontext.workinghours" id="workinghours"  name="workinghours">
+                          </mat-input-container>
+                    </td>  
+                  <td>
+                    <div id="imagediv">
+                      <img  [src]="employeeincontext.imagesrc" matTooltip="Selected image of employee" id="img"  class="img-responsive mat-card-image"/>
+                    </div> 
+              </td>
+              <td>
+                    <input type="file" id="employeeimage"  (change)="onfile($event)"  name="employeeimage" style="visibility: hidden">
+                    <label for="employeeimage" matTooltip="Click to upload employee image" class="btn btn-danger" mat-raised-button>
+                      UPLOAD IMAGE
+                    </label>
+              </td> 
+              <td>
+                <mat-form-field>
+                <mat-select  placeholder="Employee Type" matTooltip="type of employee" #employeetype id="employeetype" name="employeetype" [(ngModel)]="employeeincontext.employeetypeId"> 
+                  <mat-option *ngFor="let currentemployeetype of employeetypes" [value]="currentemployeetype.Id">
+                    {{currentemployeetype.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint align="end">
+                    Type Of Employee
+                  </mat-hint>
+              </mat-form-field>
+              </td>
+                </tr>                
+                </table>
+            </div>
+
+            <div class="col-lg-2">
+              <div>
+                  <input type="file" id="employeedocumentimage"  (change)="onfileEmployeeDocument($event)"  name="employeedocumentimage" style="visibility: hidden">
+                  <img *ngIf="imgsrc" [src]="imgsrc" id="documentimage" style="visibility: hidden;width:0px;height:0px">
+              </div>
+                <div>
+                  <label for="employeedocumentimage" id="employeedocumentuploader" matTooltip="Click to upload employee documents"><a>UPLOAD CERTIFICATES</a></label>
+                  
+                  <table  cellspacing="1" cellpadding="1" class="fullwidth">
+                    <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Action</th>
+                    </tr>
+                    </thead>      
+                    <tbody *ngIf="employeedocumentincontext">
+                        <div *ngIf="employeedocumentincontext.length < 1">
+                           {{tabledisplaystatus}}
+                          </div>
+                      <tr  *ngFor="let doc of employeedocumentincontext;let n=index">
+                        <td>{{doc.details}}</td>
+                        <td><a (click)="removeEmployeeDocument($event,n)" href="">Remove</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>            
+              </div>
+
+            <div class="row">
+                <table class="fullwidth">
+                    <tr>
+                        <td>
+                          <p style="margin-top:20px;"id="saveemployee" name="saveemployee" matTooltip="Button will be enabled when input fields are valid">
+                              <button [disabled]="!employeeform.form.valid || !updatedeletedisable" type="submit" matTooltip="Click to Save a new Employee" mat-raised-button>
+                                  Save Employee
+                              </button>
+                            </p>
+                      </td>  
+                      <td>
+                        <p style="margin-top:20px;"id="updateemployee" name="updateemployee" matTooltip="Button will be enabled when input fields are valid">
+                            <button [disabled]="updatedeletedisable" type="button" (click)="updateOldEmployee()" matTooltip="Click to update Employee" mat-raised-button>
+                                Update Employee
+                            </button>
+                          </p>
+                    </td>  
+                    <td>
+                        <p style="margin-top:20px;" id="removeemployee" name="removeemployee">
+                            <button [disabled]="updatedeletedisable" type="button" (click)="removeOldEmployee()" matTooltip="Click to remove current Employee" mat-raised-button>
+                                Remove Employee
+                            </button>
+                          </p>
+                    </td>  
+                    <td>
+                      <p style="margin-top:20px;" id="createemployee" name="createemployee">
+                          <button [disabled]="" type="button" (click)="clearInputFields()" matTooltip="Click to empty all fields" mat-raised-button>
+                              Clear Fields
+                          </button>
+                        </p>
+                  </td>  
+                      </tr>
+                </table>
+            </div>
+        </form>
+      </div>
+    </div>
+

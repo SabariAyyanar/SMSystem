@@ -1,0 +1,115 @@
+<mat-card-content class="subnav">
+    <div class="container flex-container">
+    <div class="flex-container-item">
+        <label for="searchclass">Class</label>
+  
+        <mat-form-field>  
+            <mat-select matTooltip="Filter Class for Student"
+            [(ngModel)]="search.studentclass" (ngModelChange)="filterobject();setCurrentClass()"
+             name="searchclass">  
+              <mat-option *ngFor="let currentclass of allclasses" [value]="currentclass.Id">
+                {{currentclass.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+      </div>
+      <div class="flex-container-item">
+
+          <label for="searchdepartment" #lab>Department</label>  
+
+          <mat-form-field>
+              <mat-select  matTooltip="Filter department for student" [(ngModel)]="search.department"
+              (ngModelChange)="filterobject()" name="searchdepartment"> 
+                <mat-option *ngFor="let currentdepartment of alldepartments" [value]="currentdepartment.Id">
+                  {{currentdepartment.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>           
+
+      </div>
+        <div class="flex-container-item">
+
+            <label for="searchstudent">Student Name</label>
+  
+            <kendo-combobox [data]="kendocombostudents"
+            [textField]="'firstname'"
+            [valueField]="'Id'"
+            [(ngModel)]="search.name"
+            (ngModelChange)="kendoComboValueChange($event)"
+            [filterable]="true"
+            [valueField]="true"
+            (filterChange)="handleFilter($event)"
+                [placeholder]="'Search ...'">
+            </kendo-combobox>
+
+            </div>
+
+          </div>
+  </mat-card-content>
+  
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6">
+            <mat-card class="markentry">
+                <mat-card-header>
+                    <div mat-card-avatar>
+                        <mat-icon>money_off</mat-icon>
+                    </div>
+                    <mat-card-title>
+                      Marks Entry For {{currentstudentincontext.firstname? currentstudentincontext.firstname.toUpperCase(): '(NO STUDENT SELECTED)' }}
+                      {{ currentstudentincontext.lastname? currentstudentincontext.lastname.toUpperCase(): ''}}
+
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                      Use this field to enter student marks {{currentclassincontext.name? '':
+                        '(Kindly Select a Class)'}}
+                    </mat-card-subtitle>
+                    </mat-card-header>
+              <mat-card-content *ngIf="currentclassincontext.classsubjects">
+                <form [formGroup]="heroform">
+                <div class="flex-container" formArrayName="exammarks">
+                    <div class="flex-container-item" 
+                    *ngFor="let subject of exammarks.controls;let i= index" [formGroupName]="i">
+                        <mat-input-container>
+                          <input numberonly="true" formControlName="mark" matInput placeholder="Enter Marks">
+                          <mat-hint align="end">
+                            {{subject.value.studentsubject.name}}
+                          </mat-hint>
+                        </mat-input-container>
+                    </div>
+              </div>
+            </form>
+              </mat-card-content>
+              <mat-card-footer>
+                <button mat-raised-button (click)="saveNewExam()" [disabled]="isUpdate">Save</button>
+                <button mat-raised-button (click)="updateOldExam()" [disabled]="!isUpdate">UPDATE</button>
+                <button mat-raised-button  [disabled]="heroform.pristine" (click)="cancelOldExam()">CANCEL</button>
+              </mat-card-footer>
+            </mat-card>
+          </div>
+          <div class="col-lg-6">
+            <kendo-grid [data]="view | async"
+            [pageSize]="gridState.take"
+            [skip]="gridState.skip"
+            [sort]="gridState.sort"
+            [pageable]="true"
+            [selectable]="true"
+            (pageChange)="pageChange($event)"
+            (dataStateChange)="onStateChange($event)"
+            (edit)="editHandler($event)"
+            (remove)="removeHandler($event)"
+            [navigable]="true">
+            <kendo-grid-column field="student.firstname" editor="string" title="First Name"></kendo-grid-column>
+            <kendo-grid-column field="student.lastname" editor="string" title="Last Name"></kendo-grid-column>
+            <kendo-grid-column field="student.studentclass.name" editor="string" title="Class"></kendo-grid-column>
+              <kendo-grid-command-column title="command" width="220">
+                  <ng-template kendoGridCellTemplate>
+                      <button kendoGridEditCommand class="k-primary">Edit</button>
+                      <button kendoGridRemoveCommand>Remove</button>
+                  </ng-template>
+              </kendo-grid-command-column>
+            </kendo-grid>
+          </div>
+      </div>
+  </div>

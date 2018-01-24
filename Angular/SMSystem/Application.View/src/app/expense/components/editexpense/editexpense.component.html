@@ -1,0 +1,59 @@
+<div class="container" id="maincontainer">
+    <div class="row">
+      <div class="col-lg-4">
+        <form [formGroup]="expenseform">
+        <mat-card>
+            <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon>money_off</mat-icon>
+                </div>
+                <mat-card-title>EDIT EXPENSE CATEGORY</mat-card-title>
+                <mat-card-subtitle>ADD,UPDATE or REMOVE Expense Category</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                  <div>
+                    <div>
+                <div>
+                <mat-form-field>
+                  <mat-select placeholder="Select Category"  formControlName="Id" [(ngModel)]="expensecategoryid" (ngModelChange)="modelChange($event)">  
+                    <mat-option *ngFor="let currentcategory of allexpensecategory"  [value]="currentcategory.Id">
+                      {{currentcategory.name}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-hint align="end">
+                      Category
+                    </mat-hint>
+                </mat-form-field>
+              </div>
+                <div>
+                  <mat-input-container>
+                    <input matInput placeholder="New Name"
+                    formControlName="name"
+                    matTooltip="Enter New Name For Expense Category"
+                      name="amount">
+                      <mat-hint align="end">
+                        New Name
+                      </mat-hint>
+                  </mat-input-container>
+                </div>
+              </div>
+              </div>
+        </mat-card-content>
+        <mat-card-footer >
+          <div class="flex-container">
+              <div class="flex-container-item">
+                <button mat-raised-button [disabled]="updatedeletedisable" (click)="AddNewExpenseCategory()">ADD</button>
+              </div>
+              <div class="flex-container-item">
+                  <button mat-raised-button [disabled]="!updatedeletedisable" (click)="UpdateOldExpenseCategory()">UPDATE</button>
+              </div>
+              <div class="flex-container-item">
+                    <button mat-raised-button [disabled]="!updatedeletedisable" (click)="DeleteOldExpenseCategory()">REMOVE</button>
+              </div>
+            </div>
+        </mat-card-footer>        
+      </mat-card>
+    </form>
+      </div>
+    </div>
+  </div>

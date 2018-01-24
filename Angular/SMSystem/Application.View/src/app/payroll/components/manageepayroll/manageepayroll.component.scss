@@ -1,0 +1,81 @@
+
+.text-muted{
+    color: red;
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+.mat-raised-button{
+    background-color: blue;
+    color: white;
+}
+
+#maincontent{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .red-background{
+        background-color: #ff4081;
+
+        .mat-input-container{
+            width: 100px;
+            
+        .mat-input-element{
+            color: white;
+            font-weight: bold;
+        }
+    
+        .mat-hint{
+            color: white;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+        }
+    }
+
+    .footeraction{
+        .mat-input-container{
+            width: 100px;
+            
+        .mat-input-element{
+            font-weight: bold;
+        }
+    
+        .mat-hint{
+            color: blue;
+            font-weight: bold;
+            font-family: sans-serif;
+        }
+        }
+    }
+
+    .emptable{
+        table{
+            thead{
+                th{
+                    padding: 2px;
+                }
+            }
+            tbody{
+                tr td{
+                    padding-bottom: 3px;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

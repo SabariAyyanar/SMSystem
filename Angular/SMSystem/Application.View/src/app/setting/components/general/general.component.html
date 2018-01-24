@@ -1,0 +1,238 @@
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4">
+              <mat-card>
+                <mat-card-header>
+                    <h4><strong>CLASSES</strong></h4>
+                </mat-card-header>
+                <mat-card-content>                     
+                    <div>
+                        <mat-form-field *ngIf="studentclasses">
+                            <mat-select  placeholder="Select class" #schoolclasses="ngModel" id="schoolclass" matTooltip="Select class to modify" [(ngModel)]="currentstudentclassincontext.Id" name="schoolclass"> 
+                              <mat-option *ngFor="let currentclass of studentclasses" [value]="currentclass.Id">
+                                {{currentclass.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                      <div>
+                        <mat-input-container>
+                            <input matInput #enteredclasses="ngModel" id="enteredclass"  [(ngModel)]="currentstudentclassincontext.name" name="enteredclass">
+                          <mat-hint align="end">
+                              New Class Name
+                            </mat-hint>
+                          </mat-input-container>
+                        </div>
+                        <div class="row">
+                            <button type="button" (click)="addNewStudentClass()" matTooltip="Click to add new class" mat-raised-button>
+                                ADD
+                            </button>
+                            <button (click)="updateOldStudentClass()" matTooltip="Click to update class" mat-raised-button>
+                                UPDATE
+                            </button>
+                            <button (click)="removeOldStudentClass()" matTooltip="Click to Remove class" mat-raised-button>
+                                REMOVE
+                            </button>
+                        </div>
+                </mat-card-content>
+              </mat-card>
+              
+                </div>
+
+                <div class="col-lg-4">
+                    <mat-card>
+                      <mat-card-header>
+                          <h4><strong>DEPARTMENTS</strong></h4>
+                      </mat-card-header>
+                      <mat-card-content>                     
+                          <div>
+                              <mat-form-field  *ngIf="departments">
+                                  <mat-select  placeholder="Select Department" #schooldepartments="ngModel" id="schooldepartment" [(ngModel)]="currentdepartmentincontext.Id" matTooltip="Select department to modify" name="schooldepartment"> 
+                                    <mat-option *ngFor="let currentdepartment of departments" [value]="currentdepartment.Id">
+                                      {{currentdepartment.name}}
+                                    </mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                          </div>
+                            <div>
+                              <mat-input-container>
+                                  <input matInput [(ngModel)]="currentdepartmentincontext.name" name="entereddepartment">
+                                <mat-hint align="end">
+                                    New Department Name
+                                  </mat-hint>
+                                </mat-input-container>
+                              </div>
+                              <div class="row">
+                                  <button type="button" (click)="addNewDepartment()" matTooltip="Click to add new department" mat-raised-button>
+                                      ADD
+                                  </button>
+                                  <button type="button" (click)="updateOldDepartment()" matTooltip="Click to update old department" mat-raised-button>
+                                      UPDATE
+                                  </button>
+                                  <button type="button" (click)="removeOldDepartment()" matTooltip="Click to Remove department" mat-raised-button>
+                                      REMOVE
+                                  </button>
+                              </div>
+                      </mat-card-content>
+                    </mat-card>                    
+                </div>
+              
+                      <div class="col-lg-4">
+                          <mat-card>
+                            <mat-card-header>
+                                <h4><strong>REGIONS</strong></h4>
+                            </mat-card-header>
+                            <mat-card-content>                     
+                                <div>
+                                    <mat-form-field>
+                                        <mat-select  placeholder="Select Region" #region="ngModel" [(ngModel)]="currentregionincontext.Id" matTooltip="Select region to modify" name="schoolregion"> 
+                                          <mat-option *ngFor="let currentregion of regions" [value]="currentregion.Id">
+                                            {{currentregion.name}}
+                                          </mat-option>
+                                        </mat-select>
+                                      </mat-form-field>
+                                </div>
+                                  <div>
+                                    <mat-input-container>
+                                        <input matInput [(ngModel)]="currentregionincontext.name" name="enteredregion">
+                                      <mat-hint align="end">
+                                          New Region Name
+                                        </mat-hint>
+                                      </mat-input-container>
+                                    </div>
+                                    <div class="row">
+                                        <button (click)="addNewRegion()" matTooltip="Click to add new region" mat-raised-button>
+                                            ADD
+                                        </button>
+                                        <button (click)="updateOldRegion()" matTooltip="Click to update old region" mat-raised-button>
+                                            UPDATE
+                                        </button>
+                                        <button (click)="removeOldRegion()" matTooltip="Click to Remove region" mat-raised-button>
+                                            REMOVE
+                                        </button>
+                                    </div>
+                            </mat-card-content>
+                          </mat-card>                          
+                     </div>
+
+
+                            <div class="col-lg-4">
+                                <mat-card>
+                                  <mat-card-header>
+                                      <h4><strong>SUBJECTS</strong></h4>
+                                  </mat-card-header>
+                                  <mat-card-content>                     
+                                      <div>
+                                          <mat-form-field  *ngIf="studentsubjects">
+                                              <mat-select  placeholder="Select Class" (change)="filterStudentSubject()" #subjectclass="ngModel" [(ngModel)]="currentstudentsubjectincontext.studentclassid" matTooltip="Select class to modify" name="schoolsubjectclass"> 
+                                                <mat-option *ngFor="let currentclass of studentclasses" [value]="currentclass.Id">
+                                                    {{currentclass.name}}
+                                                  </mat-option>
+                                              </mat-select>
+                                            </mat-form-field>
+                                      </div>
+                                      <div>
+                                        <mat-form-field *ngIf="filterstudentsubjects">
+                                            <mat-select  placeholder="Select Subject" #subjects="ngModel" [(ngModel)]="currentstudentsubjectincontext.Id" matTooltip="Select subject to modify" name="schoolsubjects"> 
+                                              <mat-option *ngFor="let currentstudentsubject of filterstudentsubjects" [value]="currentstudentsubject.Id">
+                                                {{currentstudentsubject.name}}
+                                              </mat-option>
+                                            </mat-select>
+                                            <mat-hint align="end">
+                                              OPTIONAL
+                                            </mat-hint>
+                                          </mat-form-field>
+                                    </div>
+                                        <div>
+                                          <mat-input-container>
+                                              <input matInput [(ngModel)]="currentstudentsubjectincontext.name" name="enteredsubject">
+                                            <mat-hint align="end">
+                                                New Subject Name
+                                              </mat-hint>
+                                            </mat-input-container>
+                                          </div>
+                                          <div class="row">
+                                              <button (click)="addNewSubject()" matTooltip="Click to add new subject" mat-raised-button>
+                                                  ADD
+                                              </button>
+                                              <button (click)="updateOldSubject()" matTooltip="Click to update old subject" mat-raised-button>
+                                                  UPDATE
+                                              </button>
+                                              <button (click)="removeOldSubject()" matTooltip="Click to Remove subject" mat-raised-button>
+                                                  REMOVE
+                                              </button>
+                                          </div>
+                                  </mat-card-content>
+                                </mat-card>
+                                
+                                  </div>
+
+
+    <div class="col-lg-4">
+    <mat-card>
+        <mat-card-header>
+            <h4><strong>SCHOOL DATA</strong></h4>
+        </mat-card-header>
+        <mat-card-content *ngIf="currentschoolinfoincontext">    
+            <div>
+                <mat-input-container>
+                    <input matInput [(ngModel)]="currentschoolinfoincontext.schoolname" name="schoolname">
+                <mat-hint align="end">
+                    School Name
+                    </mat-hint>
+                </mat-input-container>
+                </div>
+                <div>
+                <mat-input-container>
+                    <input matInput [(ngModel)]="currentschoolinfoincontext.email" name="email">
+                    <mat-hint align="end">
+                        Email Address
+                    </mat-hint>
+                    </mat-input-container>
+                </div>
+                <div>
+                        <mat-input-container>
+                            <input matInput [(ngModel)]="currentschoolinfoincontext.password" name="password">
+                            <mat-hint align="end">
+                                Email Password
+                            </mat-hint>
+                            </mat-input-container>
+                        </div>
+                <div>
+                    <mat-input-container>
+                        <input matInput [(ngModel)]="currentschoolinfoincontext.location" name="location">
+                        <mat-hint align="end">
+                            Location
+                        </mat-hint>
+                        </mat-input-container>
+                    </div>
+                    <div>
+                        <mat-input-container>
+                            <input matInput [(ngModel)]="currentschoolinfoincontext.address" name="address">
+                            <mat-hint align="end">
+                                Address
+                            </mat-hint>
+                            </mat-input-container>
+                        </div>
+                        <div>
+                        <mat-input-container>
+                            <input matInput [(ngModel)]="currentschoolinfoincontext.contactnumber" name="contactnumber">
+                            <mat-hint align="end">
+                                Phone Number
+                            </mat-hint>
+                            </mat-input-container>
+                        </div>
+                <div class="row">
+                    <button (click)="saveSchoolInfo()" matTooltip="Click to save school information" mat-raised-button>
+                        SAVE
+                    </button>
+                </div>
+        </mat-card-content>
+    </mat-card>
+    
+        </div>
+                    
+
+        </div>
+      </div>

@@ -1,0 +1,97 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">My School Management System</a>
+      </div>
+      <div class="">
+      <form (ngSubmit) = "onLogin()" #loginForm="ngForm" class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="login.username" required="" name="username"  #name="ngModel">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" [(ngModel)]="login.password" name="password" placeholder="Password" required=""  #name="ngModel">
+          </div>
+        <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-default">Login</button>
+      </form>
+    </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+        <div class="row" id="main">
+            <div class="col-lg-8">
+
+            </div>
+            <div class="col-lg-4">
+                <div id="register">
+                <h2>Register</h2>
+            <div [hidden]="submitted">
+                <form (ngSubmit)="onSubmit()" #heroForm = "ngForm" >
+                    <div class="inputBox">
+                        <input type="text"  [(ngModel)]="model.username" name="username" required="" #name="ngModel">
+                        <label>Username</label>
+                        <div [hidden]="name.valid || name.pristine"
+                            class="alert alert-danger">
+                        Username is required
+                        </div>
+                    </div>
+                    <div class="inputBox">
+                        <input type="Email"  [(ngModel)]="model.email" name="email" required="" #email="ngModel">
+                        <label>Email</label>
+                        <div [hidden]="email.valid || email.pristine"
+                        class="alert alert-danger">
+                         Email is required
+                    </div>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text"  [(ngModel)]="model.password" name="password" required="" #password="ngModel">
+                        <label>Password</label>
+                        <div [hidden]="password.valid || password.pristine"
+                        class="alert alert-danger">
+                         Password is required
+                    </div>
+                    </div>
+                    <div class="inputBox">
+                        <input type="text"  [(ngModel)]="confirmpassword" name="confirmpassword" required="" #confirm="ngModel">
+                        <label>Confirm Password</label>
+                        <div [hidden]="password.pristine || confirm.pristine || confirmpassword ===model.password"
+                        class="alert alert-danger">
+                         passwords do not match
+                    </div>
+                    </div>
+                    <div class="form-group">
+                            <label for="power">Category</label>
+                            <select class="form-control" id="power" required [(ngModel)]="model.alterEgo" name="power">
+                              <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+                            </select>
+                    </div>
+                    <input type="submit" name="" value="Register" [disabled]="!heroForm.form.valid">
+                    <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">Clear Texts</button>
+                </form>
+            </div>
+            <div [hidden]="!submitted">
+                    <h2>You submitted the following:</h2>
+                    <div class="row">
+                      <div class="col-xs-3">Name</div>
+                      <div class="col-xs-9  pull-left">{{ model.username }}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3">Email</div>
+                      <div class="col-xs-9 pull-left">{{ model.email }}</div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-3">Password</div>
+                      <div class="col-xs-9 pull-left">{{ model.password }}</div>
+                    </div>
+                    <div class="row">
+                            <div class="col-xs-3">Category</div>
+                            <div class="col-xs-9 pull-left">{{ model.alterEgo }}</div>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+                    <button class="btn btn-primary" (click)="onRegisterSave();submitted=false;heroForm.reset()">Save</button>
+                  </div>
+            </div>
+            </div>
+        </div>
+  </div>

@@ -1,0 +1,39 @@
+<div>
+    <h2 mat-dialog-title> EDIT PAYMENT OPTIONS</h2>
+    <hr>
+    <mat-dialog-content>
+      <div>
+          <label for="searchpaymentstudent">Student Name</label>
+          <label>{{data[0].student.firstname + " " + data[0].student.lastname}}</label>
+        
+      </div>
+      <div>
+          <label>Payment Date</label>
+          <label>{{data[0].paymentdate}}</label>
+      </div>
+      <div>
+          <label for="editamount">Amount</label>
+          <mat-input-container>
+              <input matInput (keyup) ="checkOnlyNumbers()" id="editamount" [(ngModel)]="data[0].amount" name="editamount">
+            </mat-input-container>
+      </div>
+      <div>
+          <label for="editamountinwords">Amount In Words</label>
+          <mat-input-container>
+              <input matInput  id="editamountinwords" [(ngModel)]="data[0].amountinwords" name="editamountinwords">
+            </mat-input-container>
+      </div>
+    </mat-dialog-content>
+    <hr>
+    <mat-dialog-actions>
+      <button mat-raised-button (click)="onUpdateConfirm()">
+        UPDATE
+      </button>
+      <button mat-raised-button (click)="onDeleteConfirm()">
+          REMOVE
+        </button>
+        <button mat-raised-button (click)="onCancelConfirm()">
+            CANCEL
+          </button>
+    </mat-dialog-actions>
+</div>

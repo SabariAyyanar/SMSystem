@@ -1,0 +1,24 @@
+@import url("../../../../assets/styles/base2Style.scss");
+
+.empdetails{
+    display: flex;
+
+    div{
+        flex: 1;
+    }
+}
+
+.loanhistory{
+    margin-top: 10px;
+}
+
+.flex-container{
+    display: flex;
+
+    .flex-container-item{
+        flex: 1;
+        margin-right: 5px;
+    }
+
+    margin-bottom: 10px;
+}

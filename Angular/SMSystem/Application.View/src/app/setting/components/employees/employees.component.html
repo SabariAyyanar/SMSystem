@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="row">
+          <div class="col-lg-4">
+            <mat-card>
+              <mat-card-header>
+                  <h4><strong>Employee Category</strong></h4>
+              </mat-card-header>
+              <mat-card-content>                     
+                  <div>
+                      <mat-form-field *ngIf="allemployeecategories">
+                          <mat-select  placeholder="Select Cagegory" (change)="displayOldAllowancePercent()"   matTooltip="Select Employee Category to modify"
+                                  [(ngModel)]="currentemployeecategoryincontext.Id" name="employeecategory" #schoolclasses="ngModel"> 
+                            <mat-option #categoryindex  *ngFor="let currentcategory of allemployeecategories;let i=index" name="i" [value]="currentcategory.Id">
+                              {{currentcategory.name}} 
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </div>
+                    <div>
+                      <mat-input-container>
+                          <input matInput #enteredclasses="ngModel" 
+                          [(ngModel)]="currentemployeecategoryincontext.name"  name="enteredcategory">
+                        <mat-hint align="end">
+                            New Category Name
+                          </mat-hint>
+                        </mat-input-container>
+                      </div>
+                    <div>
+                      <mat-input-container>
+                          <input matInput #enteredclasses="ngModel" numberonly="true"
+                          [(ngModel)]="currentemployeecategoryincontext.allowancepercentage" name="enteredallowancepercentage">
+                        <mat-hint align="end">
+                            Allowance Percentage
+                          </mat-hint>
+                        </mat-input-container>
+                      </div>
+                      <div class="row">
+                          <button type="button" (click)="addNewEmployeeCategory()" matTooltip="Click to add new Employee Category" mat-raised-button>
+                              ADD
+                          </button>
+                          <button (click)="updateOldEmployeeCategory()" matTooltip="Click to update Employee Category" mat-raised-button>
+                              UPDATE
+                          </button>
+                          <button (click)="removeOldEmployeeCategory()" matTooltip="Click to Remove Employee Category" mat-raised-button>
+                              REMOVE
+                          </button>
+                      </div>
+              </mat-card-content>
+            </mat-card>
+        
+          </div>
+
+          <div class="col-lg-4">
+              <mat-card>
+                <mat-card-header>
+                    <h4><strong>Level Of Education</strong></h4>
+                </mat-card-header>
+                <mat-card-content>                     
+                    <div>
+                        <mat-form-field *ngIf="allemployeelevelsofeducations">
+                            <mat-select  id="levelofeducation"  placeholder="Select Level"   matTooltip="Select Employee Level Of Education to modify"
+                                    [(ngModel)]="currentemployeelevelsofeducationincontext.Id" name="levelofeducation"
+                                     #employeelevelofeducation="ngModel"> 
+                              <mat-option *ngFor="let currentlevelofeducation of allemployeelevelsofeducations;let i=index" 
+                              [value]="currentlevelofeducation.Id">
+                                {{currentlevelofeducation.name}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                      <div>
+                        <mat-input-container>
+                            <input matInput
+                            [(ngModel)]="currentemployeelevelsofeducationincontext.name"  name="enteredlevelfoeducation">
+                          <mat-hint align="end">
+                              New Level Name
+                            </mat-hint>
+                          </mat-input-container>
+                        </div>
+                        <div class="row">
+                            <button type="button" (click)="addNewEmployeeLevelOfEducation()" 
+                            matTooltip="Click to add new Employee Level Of Education" mat-raised-button>
+                                ADD
+                            </button>
+                            <button (click)="updateOldEmployeeLevelOfEducation()"
+                             matTooltip="Click to update Employee Level Of Education" mat-raised-button>
+                                UPDATE
+                            </button>
+                            <button (click)="removeOldEmployeeLevelOfEducation()" 
+                            matTooltip="Click to Remove Employee Level Of Education" mat-raised-button>
+                                REMOVE
+                            </button>
+                        </div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+
+
+            <div class="col-lg-4">
+                <mat-card>
+                  <mat-card-header>
+                      <h4><strong>Employee Type</strong></h4>
+                  </mat-card-header>
+                  <mat-card-content>                     
+                      <div>
+                          <mat-form-field *ngIf="allemployeetypes">
+                              <mat-select  id="employeetype"  placeholder="Select Employee Type"   matTooltip="Select Employee Type to modify"
+                                      [(ngModel)]="currentemployeetypeincontext.Id" name="employeetype"
+                                       #employeelevelofeducation="ngModel"> 
+                                <mat-option *ngFor="let currenttype of allemployeetypes;" 
+                                [value]="currenttype.Id">
+                                  {{currenttype.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                      </div>
+                        <div>
+                          <mat-input-container>
+                              <input matInput
+                              [(ngModel)]="currentemployeetypeincontext.name"  name="enteredemployeetype">
+                            <mat-hint align="end">
+                                New Type Name
+                              </mat-hint>
+                            </mat-input-container>
+                          </div>
+                          <div class="row">
+                              <button type="button" (click)="renameEmployeeType()" 
+                              matTooltip="Click to rename employee type" mat-raised-button>
+                                  RENAME
+                              </button>
+                          </div>
+                  </mat-card-content>
+                </mat-card>
+            
+              </div>
+    </div>
+  </div>

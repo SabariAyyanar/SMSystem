@@ -1,0 +1,109 @@
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3">
+              <mat-card>                    
+              <mat-card-header>
+                  <h4><strong>STUDENT FEE</strong></h4>
+              </mat-card-header>
+                <mat-card-content>
+                          <div>
+                            <mat-form-field>
+                                <mat-select  placeholder="Select class" matTooltip="filter class" [(ngModel)]="searchstudent.studentclass" name="searchstudent"> 
+                                  <mat-option *ngFor="let currentclass of studentclasses" [value]="currentclass.Id">
+                                    {{currentclass.name}}
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                          </div>
+                          <div>
+                              <mat-input-container>
+                                  <input matInput placeholder="Search Name" matTooltip="Filter student name" id="searchstudentname" [(ngModel)]="searchstudent.name" name="searchname">
+                                  <mat-hint align="end">
+                                      Search Student Name
+                                    </mat-hint>
+                                </mat-input-container>
+                          </div>
+                          <div>
+                              <mat-input-container>
+                                  <label for="searchstudentname">Amount Paid</label>
+                                  <input matInput matTooltip="Filter student name" id="searchstudent" [(ngModel)]="searchstudent.name" name="searchname">
+                                </mat-input-container>
+                                <mat-input-container>
+                                    <label for="searchstudentname">Amount Owing</label>
+                                    <input matInput (keyup) = "filterobject()" matTooltip="Filter student name" id="searchstudent" [(ngModel)]="searchstudent.name" name="searchname">
+                                  </mat-input-container>
+                          </div>
+                          <div>
+                              <button matTooltip="Click to update old Fee" mat-raised-button>UPDATE</button>
+                          </div>
+                  </mat-card-content>
+                </mat-card>
+            </div>
+              
+          <div class="col-lg-6">
+                    <h4><strong>CLASS FEES</strong></h4>                 
+                    <table class="fullwidth table-stripe">
+                      <thead>
+                        <th>Class</th>
+                        <th>Amount</th>
+                        <th>Last Modified</th>
+                        <th>Action</th>
+                        <th>Action</th>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let currentclass of studentclasses">
+                          <td>{{currentclass.name}}</td>
+                          <td>{{currentclass.classamounttopay}}</td>
+                          <td>{{currentclass.lastmodifieddate | date}}</td>
+                          <td><button matTooltip="Click to set new Fee" mat-raised-button>SET</button></td>
+                          <td><button matTooltip="Click to update old Fee" mat-raised-button>UPDATE</button></td>
+                        </tr>
+                      </tbody>
+                    </table>                              
+                </div>
+                    
+    <div class="col-lg-3">
+        <mat-card>
+          <mat-card-header>
+              <h4><strong>STATUS</strong></h4>
+          </mat-card-header>
+          <mat-card-content>                     
+              <div>
+                  <mat-form-field>
+                      <mat-select  placeholder="Select class" [(ngModel)]="currentstudentstatusincontext.Id" matTooltip="Select class to modify" name="studentstatus"> 
+                        <mat-option *ngFor="let currentstatus of studentstatuses" [value]="currentstatus.Id">
+                          {{currentstatus.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+                <div>
+                  <mat-input-container>
+                      <input matInput  [(ngModel)]="currentstudentstatusincontext.name" name="enteredstatus">
+                    <mat-hint align="end">
+                        New Status Name
+                      </mat-hint>
+                    </mat-input-container>
+                  </div>
+                  <div class="row">
+                      <button type="button" (click)="addNewStudentStatus()"  matTooltip="Click to add new status" mat-raised-button>
+                          ADD
+                      </button>
+                      <button type="button" (click)="updateOldStudentStatus()" matTooltip="Click to update old status" mat-raised-button>
+                          UPDATE
+                      </button>
+                      <button type="button" (click)="removeOldStudentStatus()" matTooltip="Click to Remove status" mat-raised-button>
+                          REMOVE
+                      </button>
+                  </div>
+          </mat-card-content>
+        </mat-card>
+        
+          </div>                   
+
+        </div>
+        <div class="row">                
+          
+        </div>
+      </div>

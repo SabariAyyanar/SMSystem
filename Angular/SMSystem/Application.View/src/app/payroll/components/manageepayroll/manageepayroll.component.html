@@ -1,0 +1,298 @@
+
+    <div class="container">
+      <div class="row" id="maincontent">        
+      <div class="col-lg-4">
+        <mat-card class="red-background">
+          <mat-card-content>
+           <table class="fullwidth">
+            <tr>
+              <td>
+                    <mat-input-container>
+                      <input numberonly="true" (keyup)="computeworkday()" matInput [(ngModel)]="payrollhour.workday" id="areaofexpertise"  name="areaofexpertise">
+                        <mat-hint align="end">
+                          Work Day Hours
+                        </mat-hint>
+                    </mat-input-container>
+              </td>
+              <td>
+                    <mat-input-container>
+                      <input numberonly="true" (keyup)="computeworkdayovertime()" matInput [(ngModel)]="payrollhour.workdayovertime" id="areaofexpertise"  name="areaofexpertise">
+                        <mat-hint align="end">
+                          Work Day Overtime Hours
+                        </mat-hint>
+                    </mat-input-container>
+              </td>
+            </tr>
+              <tr>
+                  <td>
+                        <mat-input-container>
+                          <input numberonly="true" (keyup)="computesaturday()" matInput [(ngModel)]="payrollhour.saturday" id="areaofexpertise"  name="areaofexpertise">
+                            <mat-hint align="end">
+                              Saturday Hours
+                            </mat-hint>
+                        </mat-input-container>
+                  </td>
+                  <td>
+                        <mat-input-container>
+                          <input numberonly="true" (keyup)="computesaturdayovertime()" matInput [(ngModel)]="payrollhour.saturdayovertime" id="areaofexpertise"  name="areaofexpertise">
+                            <mat-hint align="end">
+                             Saturday Overtime Hours
+                            </mat-hint>
+                        </mat-input-container>
+                  </td>
+                </tr>
+                  <tr>
+                      <td>
+                            <mat-input-container>
+                              <input numberonly="true" (keyup)="computesunday()" matInput  [(ngModel)]="payrollhour.sunday" id="areaofexpertise"  name="areaofexpertise">
+                                <mat-hint align="end">
+                                 Sunday Hours
+                                </mat-hint>
+                            </mat-input-container>
+                      </td>
+                      <td>
+                            <mat-input-container>
+                              <input numberonly="true" (keyup)="computesundayovertime()" matInput [(ngModel)]="payrollhour.sundayovertime" id="areaofexpertise"  name="areaofexpertise">
+                                <mat-hint align="end">
+                                 Sunday Overtime Hours
+                                </mat-hint>
+                            </mat-input-container>
+                      </td>
+                    </tr>
+                    <tr>
+                          <td>
+                                <mat-input-container>
+                                  <input numberonly="true" (keyup)="computeholiday()" matInput [(ngModel)]="payrollhour.holiday" id="areaofexpertise"  name="areaofexpertise">
+                                    <mat-hint align="end">
+                                     Holiday Hours
+                                    </mat-hint>
+                                </mat-input-container>
+                          </td>
+                            <td>
+                                  <mat-input-container>
+                                    <input numberonly="true" (keyup)="computeholidayovertime()" matInput [(ngModel)]="payrollhour.holidayovertime" id="areaofexpertise"  name="areaofexpertise">
+                                      <mat-hint align="end">
+                                       Holiday Overtime Hours
+                                      </mat-hint>
+                                  </mat-input-container>
+                            </td>
+                          </tr>
+          </table>
+
+          </mat-card-content>
+        </mat-card>
+    </div>
+
+     <!-- div for displaying payroll rates and payroll amount in table -->
+    <div class="col-lg-4">
+      <mat-card>
+        <mat-card-content>
+
+        <table *ngIf="payrollrate" class="fullwidth table-striped">
+            <thead>
+              <th>Type</th>
+              <th>Rate</th>
+              <th>Amount</th>
+            </thead>
+        <tbody *ngIf="payrollrate">
+            <tr>
+            <td>Workday</td>
+            <td>{{payrollrate.workday}}</td>
+            <td>{{payrollamount.workday}}</td>
+          </tr>
+            <tr>
+              <td>Workday Ovetime</td>
+              <td>{{payrollrate.workdayovertime}}</td>
+              <td>{{payrollamount.workdayovertime}}</td>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td>{{payrollrate.saturday}}</td>
+                <td>{{payrollamount.saturday}}</td>
+            </tr>
+              <tr>
+                  <td>Saturday Overtime</td>
+                  <td>{{payrollrate.saturdayovertime}}</td>
+                  <td>{{payrollamount.saturdayovertime}}</td>
+                </tr>
+              <tr>
+                <td>Sunday</td>
+                <td>{{payrollrate.sunday}}</td>
+                <td>{{payrollamount.sunday}}</td>
+              </tr>
+              <tr>
+                <td>Sunday Overtime</td>
+                <td>{{payrollrate.sundayovertime}}</td>
+                <td>{{payrollamount.sundayovertime}}</td>
+              </tr>
+              <tr>
+                <td>Holiday</td>
+                <td>{{payrollrate.holiday}}</td>
+                <td>{{payrollamount.holiday}}</td>
+              </tr>
+              <tr>
+                  <td>Holiday Overtime</td>
+                  <td>{{payrollrate.holidayovertime}}</td>
+                  <td>{{payrollamount.holidayovertime}}</td>
+              </tr>
+          </tbody>
+          </table>       
+        
+        </mat-card-content>
+        <mat-card-footer class="footeraction">
+            <table class="fullwidth">
+              <tr class="text-center">
+                <td>
+                  <mat-input-container>
+                    <input numberonly="true" disabled="disabled"  matInput [(ngModel)]="payrollamount.totalworkdays" name="totalworkdays">
+                      <mat-hint align="end">
+                        Total Work Days
+                      </mat-hint>
+                  </mat-input-container>  
+                </td>
+                <td>
+                    <mat-input-container>
+                      <input numberonly="true" disabled="disabled"  matInput
+                       [(ngModel)]="payrollamount.expectedworkhours" 
+                       name="workinghours">
+                        <mat-hint align="end">
+                          Expected Work Hours
+                        </mat-hint>
+                    </mat-input-container>  
+                  </td>
+              </tr>
+              <br>
+              <tr class="text-center">
+                      <td>
+                             <button matTooltip="Click to Save payroll details" 
+                             mat-raised-button (click)="AddNewPayrollAmount()">
+                                  SAVE
+                              </button>
+                      </td>
+                      <td>
+                          <button matTooltip="Click to update payroll details"
+                           mat-raised-button (click)="ClearPayrollAmount()">
+                              CLEAR
+                          </button>
+                      </td>
+              </tr>
+            </table>
+            <br>
+          </mat-card-footer>
+      </mat-card>
+    </div>
+
+     <!-- end div for displaying paryoll rates and payroll amounts -->
+
+    <div class="col-lg-4">
+        <kendo-grid [data]="view | async"
+        [pageSize]="gridState.take"
+        [skip]="gridState.skip"
+        [sort]="gridState.sort"
+        filterable="menu"
+        [pageable]="true"
+        [selectable]="true"
+        (pageChange)="pageChange($event)"
+        (dataStateChange)="onStateChange($event)"
+        (edit)="setEmployeeInContext($event)"
+        (remove)="removeHandler($event)"
+        [navigable]="true">
+        <kendo-grid-column field="fullname" editor="string" title="Name"></kendo-grid-column>
+        <kendo-grid-column field="department.name" editor="string" title="Department"></kendo-grid-column>
+          <kendo-grid-command-column title="command">
+              <ng-template kendoGridCellTemplate>
+                  <button kendoGridEditCommand class="k-primary">SELECT</button>
+              </ng-template>
+          </kendo-grid-command-column>
+        </kendo-grid>
+    </div>
+  </div>
+
+   <!-- div for displaying taxes and allowances -->
+  <div class="row">
+      <div class="row">
+        <mat-card>
+            
+          <mat-card-content>
+             <!-- div for displaying taxes -->
+              <span class="pull-left"><strong>DEDUCTIONS</strong></span>
+              <div class="row">
+                    <div class="col-lg-3">
+                        <mat-input-container>
+                            <input numberonly="true" disabled="disabled" matInput [(ngModel)]="payrollamount.payee" name="incometax">
+                              <mat-hint align="end">
+                                Income Tax
+                              </mat-hint>
+                          </mat-input-container>
+                    </div>
+                    <div class="col-lg-3">
+                        <mat-input-container>
+                            <input numberonly="true" disabled="disabled"  matInput [(ngModel)]="payrollamount.ssnit" name="ssnitdeduction">
+                              <mat-hint align="end">
+                                SSNIT Deduction
+                              </mat-hint>
+                          </mat-input-container>                    
+                      </div>
+                      <div class="col-lg-3">
+                        <mat-input-container>
+                            <input numberonly="true" disabled="disabled" matInput [(ngModel)]="payrollamount.loan" name="loandeduction">
+                              <mat-hint align="end">
+                                Loan Deducation
+                              </mat-hint>
+                          </mat-input-container>                      
+                      </div>
+              </div> 
+                 <!-- end div for displaying taxes -->
+
+              <!-- div for displaying allowances -->
+          <div>
+            <span class="pull-left"><strong>ALLOWANCES</strong></span>
+              <div class="row" *ngIf="payrollallowance">
+                    <div class="col-lg-3" *ngFor="let allowance of payrollallowance;let i= index">
+                        <div>
+                          <mat-input-container>
+                            <input numberonly="true" disabled="disabled" matInput [ngModel]="payrollamount.allowances && payrollamount.allowances[i]?.amount" 
+                            (ngModelChange)="payrollamount.allowances?.length && payrollamount.allowances[i].amount" name="payrollallowances">
+                              <mat-hint align="end">
+                                {{allowance.name}}
+                              </mat-hint>
+                          </mat-input-container>
+                        </div>
+                    </div>
+              </div>          
+        </div>
+           <!-- end div for displaying allowances -->
+
+             <!-- div for displaying gross and net salary -->
+          <div>
+              <span class="pull-left"><strong>GROSS AND NET SALARY</strong></span>
+                <div class="row">
+                      <div class="col-lg-3">
+                          <mat-input-container>
+                              <input numberonly="true" disabled="disabled"
+                               matInput [(ngModel)]="payrollamount.grosssalary" name="grosssalary">
+                                <mat-hint align="end">
+                                  Gross Salary
+                                </mat-hint>
+                            </mat-input-container>
+                      </div>
+                      <div class="col-lg-3">
+                          <mat-input-container>
+                              <input numberonly="true" disabled="disabled"
+                               matInput [(ngModel)]="payrollamount.netsalary" name="netsalary">
+                                <mat-hint align="end">
+                                  Net Salary
+                                </mat-hint>
+                            </mat-input-container>
+                      </div>
+                </div>          
+          </div>
+             <!-- end div for displaying gross and net salary -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+  </div>
+
+
+</div>
+

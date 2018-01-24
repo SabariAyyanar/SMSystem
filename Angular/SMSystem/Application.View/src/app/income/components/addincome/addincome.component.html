@@ -1,0 +1,112 @@
+<div class="container" id="maincontainer">
+  <div class="row">
+
+    <!---  DIV FOR INCOME INPUT FIELD -->
+    <div class="col-lg-4">
+        <form [formGroup]="incomeform">
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar>
+                        <mat-icon>money_off</mat-icon>
+                    </div>
+                    <mat-card-title>EDIT INCOME</mat-card-title>
+                    <mat-card-subtitle>ADD,UPDATE or REMOVE Income</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                      <div>
+                        <div>
+
+                    <div>
+                    <mat-form-field>
+                      <mat-select  formControlName="incomecategoryId" placeholder="Income Category">  
+                        <mat-option *ngFor="let currentcategory of allincomecategory"  [value]="currentcategory.Id">
+                          {{currentcategory.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                    <div>
+                      <mat-input-container>
+                        <input matInput placeholder="Description"
+                        formControlName="description"
+                        matTooltip="Description Of Income">
+                          <mat-hint align="end">
+                            Description
+                          </mat-hint>
+                      </mat-input-container>
+                    </div>
+
+                    <div>
+                        <mat-input-container>
+                          <input matInput placeholder="Amount"
+                          formControlName="amount" numberonly="true"
+                          matTooltip="Enter Amount of income received">
+                            <mat-hint align="end">
+                              Income Amount
+                            </mat-hint>
+                        </mat-input-container>
+                      </div>
+
+                      <div>
+                        <mat-form-field>
+                                  <input matTooltip="Date When Income Was Received" placeholder="Date Of Income"
+                                   matInput [matDatepicker]="myDatepicker" formControlName="dateofincome">
+                                  <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                                  <mat-datepicker #myDatepicker>Select</mat-datepicker> 
+                                  <mat-hint align="end">
+                                      Date Of Income
+                                  </mat-hint>           
+                          </mat-form-field>
+                        </div>
+
+                  </div>
+                  </div>
+            </mat-card-content>
+            <mat-card-footer >
+              <div class="flex-container">
+                  <div class="flex-container-item">
+                    <button type="button" mat-raised-button [disabled]="isUpdate" (click)="AddNewIncome()">ADD</button>
+                  </div>
+                  <div class="flex-container-item">
+                      <button type="button" mat-raised-button [disabled]="!isUpdate" (click)="UpdateOldIncome()">UPDATE</button>
+                  </div>
+                  <div class="flex-container-item">
+                        <button type="button"  mat-raised-button (click)="ClearIncomeForm()" [disabled]="incomeform.pristine">CANCEL</button>
+                  </div>
+                </div>
+            </mat-card-footer>        
+          </mat-card>
+        </form>
+    </div>
+    <!--- END OF DIV FOR INCOME INPUT FIELD -->
+
+    <!--- DIV FOR GRID -->
+    <div class="col-lg-8">
+        <kendo-grid [data]="view | async"
+        [pageSize]="gridState.take"
+        [skip]="gridState.skip"
+        [sort]="gridState.sort"
+        filterable="menu"
+        [pageable]="true"
+        [selectable]="true"
+        (pageChange)="pageChange($event)"
+        (dataStateChange)="onStateChange($event)"
+        (edit)="editHandler($event)"
+        (remove)="removeHandler($event)"
+        [navigable]="true">
+        <kendo-grid-column field="incomecategory.name" editor="string" title="Category"></kendo-grid-column>
+        <kendo-grid-column field="description" editor="string" title="Description"></kendo-grid-column>
+        <kendo-grid-column field="amount" editor="string" title="Amount"></kendo-grid-column>
+        <kendo-grid-column field="dateofincome" editor="date" title="Date"></kendo-grid-column>
+          <kendo-grid-command-column title="command" width="220">
+              <ng-template kendoGridCellTemplate>
+                  <button kendoGridEditCommand class="k-primary">Edit</button>
+                  <button kendoGridRemoveCommand>Remove</button>
+              </ng-template>
+          </kendo-grid-command-column>
+        </kendo-grid>
+      </div>
+      <!--- END OF DIV FOR GRID -->
+  </div>
+</div>

@@ -1,0 +1,239 @@
+
+         <mat-card-content class="subnav">
+            <div class="container" id="searchbar">
+            <div>
+                <label for="employeecategory">Category</label>
+                <mat-form-field>
+                    <mat-select  (change)="filterobjectEmployee()" 
+                    [(ngModel)]="searchemployee.category" name="employeecategory">  
+                      <mat-option *ngFor="let currentcategory of employeecategory" 
+                      [value]="currentcategory.Id">
+                        {{currentcategory.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+              <div>
+                  <label for="employeedepartment">Department</label>
+                  <mat-form-field>
+                      <mat-select (change)="filterobjectEmployee()" 
+                      [(ngModel)]="searchemployee.department" name="employeedepartment"> 
+                        <mat-option *ngFor="let currentdepartment of department" 
+                        [value]="currentdepartment.Id">
+                          {{currentdepartment.name}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <label for="searchemployeename">Name</label>
+                    <mat-input-container>
+                        <input matInput (keyup) = "filterobjectEmployee()"
+                         matTooltip="Filter Employee name"
+                         id="searchemployeename" [(ngModel)]="searchemployee.name"
+                          name="searchemployeename">
+                      </mat-input-container>
+                    </div>
+                  </div>
+          </mat-card-content>
+          
+      <div class="container" id="maincontent">
+        <div class="row">
+          <mat-card>
+        <mat-card-header>
+                <div mat-card-avatar>
+                    <mat-icon>info</mat-icon>
+                </div>
+                <mat-card-title>SEARCHED EMPLOYEE DETAILS</mat-card-title>
+                <mat-card-subtitle>The current employee in context basic information will be displayed here</mat-card-subtitle>
+        </mat-card-header>
+            <mat-card-content class="empdetails">
+              <!-- displaying employee details -->
+              <div>                
+                    <label>Employee Name =></label>
+                    <label>
+                            {{currentemployeeincontext.firstname? currentemployeeincontext.firstname + ' ' + currentemployeeincontext.lastname: 'Unavailable'}}
+                        </label>
+            </div>
+              <div>                
+                <label>Category =></label>
+                <label>
+                        {{currentemployeecategoryincontext.name? currentemployeecategoryincontext.name:'Unavailable'}}
+                </label>
+              </div>
+              <div>                
+                  <label>Department =></label>
+                    <label>
+                            {{currentemployeedepartmentincontext.name?currentemployeedepartmentincontext.name:'Unavailabe'}}
+                      </label>
+            </div>
+                <!-- end display employee details -->
+
+                 <!-- Input for display textbox for loan -->
+                 
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="row" class="empactions">
+<div class="col-lg-6">
+        <div class="flex-container">
+            <div class="flex-container-item">
+                        <div>
+                            <mat-input-container>
+                                <input numberonly="true" matInput matTooltip="Employee Loan Amount"
+                                [(ngModel)]="currentemployeeloanincontext.amount"
+                                (keyup)="calculateInterestAmount()" name="loanamount">
+                               
+                                <mat-hint align="end">
+                                    Loan Amount
+                                </mat-hint>
+                            </mat-input-container>
+                        </div>
+                        <div>
+                            <mat-input-container>
+                                <input numberonly="true" matInput matTooltip="Amount To Be Deducted Every Month"                                            
+                                [(ngModel)]= "currentemployeeloanincontext.monthlypayment"
+                                 name="monthlypayment">
+                                <mat-hint align="end">
+                                    Monthly Payment
+                                    </mat-hint>
+                                </mat-input-container>
+                        </div>
+                        <div [style.visibility]="updatedeletedisable? 'hidden':'visible'">
+                            <mat-input-container>
+                                <input numberonly="true"  matInput matTooltip="Loan Amount Owing"
+                                [(ngModel)]="currentemployeeloanincontext.amountowing"
+                                    name="amountowing">
+                                <mat-hint align="end">
+                                    Amount Owing
+                                </mat-hint>
+                            </mat-input-container>
+                        </div>
+                        <div [style.visibility]="updatedeletedisable? 'hidden':'visible'">
+                            <mat-input-container>
+                                <input numberonly="true" matInput matTooltip="Loan Amount Paid"
+                                [(ngModel)]="currentemployeeloanincontext.amountpaid"
+                                name="amountpaid">
+                                <mat-hint align="end">
+                                    Amount Paid
+                                </mat-hint>
+                            </mat-input-container>
+                        </div>
+                        <div>
+                            <button mat-raised-button (click)="addNewEmployeeLoan()" [disabled]="!updatedeletedisable"
+                            matTooltip="Save new loan for selected employee">ADD</button>
+                        </div>
+            </div>
+
+                        <div class="flex-container-item">
+                                    <div>
+                                        <mat-input-container>
+                                            <input numberonly="true" matInput matTooltip="Loan Interest Rate"
+                                            [(ngModel)]= "currentemployeeloanincontext.interestrate"
+                                            (keyup)="calculateInterestAmount()" name="interestrate">
+                                            <mat-hint align="end">
+                                                Interest Rate
+                                                </mat-hint>
+                                            </mat-input-container>
+                                    </div>
+                                    <div>
+                                        <mat-input-container>
+                                            <input numberonly="true" matInput matTooltip="Loan Interest Amount"                                            
+                                            [(ngModel)]= "currentemployeeloanincontext.interestamount"
+                                             name="interestamount">
+                                            <mat-hint align="end">
+                                                Interest Amount
+                                                </mat-hint>
+                                            </mat-input-container>
+                                    </div>
+                                    <div>
+                                        <mat-form-field>
+                                            <input matTooltip="Loan Date" #mydatepicker="ngModel" placeholder="Loan Date"
+                                            name="loandate" 
+                                            [(ngModel)]="currentemployeeloanincontext.loandate"
+                                             matInput [matDatepicker]="myDatepicker">
+                                            <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                                            <mat-datepicker #myDatepicker>Select</mat-datepicker>
+                                            <mat-hint align="end">
+                                                Loan Date
+                                                </mat-hint>            
+                                            </mat-form-field>
+                                    </div>
+                                    <div>
+                                        <button mat-raised-button color="accent" [disabled]="updatedeletedisable"
+                                        matTooltip="Update Loan Details" (click)="updateOldEmployeeLoan()">UPDATE</button>
+                                    </div>
+                            </div>  
+                    </div>                
+                    <!-- End of flex-container -->
+
+                    <!-- Payment Of Loan Div -->
+                               
+            <!-- This part of for loan payment -->
+                <div>
+                    <mat-card>
+                        <mat-card-header>
+                            <div mat-card-avatar>
+                                <mat-icon>money_off</mat-icon>
+                            </div>
+                            <mat-card-title>LOAN PAYMENT</mat-card-title>
+                            <mat-card-subtitle>Use this field to make loan payment</mat-card-subtitle>
+                        </mat-card-header>
+                        <mat-card-content >    
+                            <div class="flex-container">
+                                <div class="flex-container-item">
+                                    <mat-input-container>
+                                            <input numberonly="true" matInput placeholder="Amount To Pay" name="makepayment"
+                                            matTooltip="Enter loan amount to pay"
+                                            [(ngModel)]="currentemployeeloanhistoryincontext.amount">
+                                    </mat-input-container>
+                                </div>
+                                <div class="flex-container-item">
+                                        <button mat-fab color="accent" [disabled]="updatedeletedisable"
+                                         (click)="makePayment()">PAY</button>
+                                </div>
+                        </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <!-- End of loan payment -->
+                    <!-- End Payment of loan Div -->
+                
+        </div>
+        <!-- End of First Col-lg-6 for loan details -->
+                <div class="col-lg-6 loanhistory" *ngIf="allemployeeloanhistory">
+                    <mat-table #table  [dataSource]="dataSource">
+                        <ng-container matColumnDef="employeeloan">
+                            <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                            <mat-cell *matCellDef="let user">{{user.employeeloan.employee.firstname}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="amount">
+                            <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+                            <mat-cell *matCellDef="let user">{{user.amount}}</mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="paymentdate">
+                                <mat-header-cell *matHeaderCellDef>Payment Date</mat-header-cell>
+                                <mat-cell *matCellDef="let user">{{user.paymentdate | date}}</mat-cell>
+                            </ng-container>
+                        <ng-container matColumnDef="action">
+                            <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                            <mat-cell *matCellDef="let user">
+                               <button mat-icon-button matTooltip="Delete current payment details"
+                                color="accent" (click)="removeLoanHistory(user)">
+                                   <mat-icon>delete</mat-icon>
+                                </button>
+                            </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row;columns:displayedColumns"></mat-row>
+                    </mat-table>
+                    
+                    <mat-paginator #paginator
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 20]">
+                    </mat-paginator>
+                </div>
+        </div>
+      </div>
+  
+  

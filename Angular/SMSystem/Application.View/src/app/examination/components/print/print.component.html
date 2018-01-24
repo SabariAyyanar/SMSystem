@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+        <button mat-raised-button onclick =
+        "
+        var content = document.getElementById('hmm').innerHTML;
+        var mywindow = window.open('','print',height=600,width=800);
+        mywindow.document.write('<html><head><title>Print</title>');
+        mywindow.document.write('</head><body>');
+        mywindow.document.write(content);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close();
+        mywindow.focus();
+        mywindow.print();
+        mywindow.close();
+        ">
+        Print hmmm</button>
+
+        <div id="hmm">
+            <table>
+                <thead>
+                    <th></th>
+                </thead>
+            </table>
+        </div>
+    </div>
+<div class="col-lg-8">
+    <kendo-grid [data]="view | async"
+    [pageSize]="gridState.take"
+    [skip]="gridState.skip"
+    [sort]="gridState.sort"
+    [filter]="gridState.filter"
+    filterable="menu"
+    [pageable]="true"
+    [selectable]="true"
+    (pageChange)="pageChange($event)"
+    (dataStateChange)="onStateChange($event)"
+    (edit)="printHandler($event)"
+    (add)="printAllHandler($event)"
+    [navigable]="true">
+    <ng-template kendoGridToolbarTemplate>
+        <button class="k-button" >Print All</button>
+    </ng-template>
+    <kendo-grid-column field="student.firstname" editor="string" title="First Name"></kendo-grid-column>
+    <kendo-grid-column field="student.lastname" editor="string" title="Last Name"></kendo-grid-column>
+    <kendo-grid-column field="student.studentclass.name" editor="string" title="Class"></kendo-grid-column>
+    <kendo-grid-column field="student.department.name" editor="string" title="Department"></kendo-grid-column>
+      <kendo-grid-command-column title="command" width="220">
+          <ng-template kendoGridCellTemplate>
+              <button kendoGridEditCommand class="k-primary">View</button>
+              <button kendoGridRemoveCommand class="k-primary">Print</button>
+          </ng-template>
+      </kendo-grid-command-column>
+    </kendo-grid>
+  </div>
+</div>
+</div>

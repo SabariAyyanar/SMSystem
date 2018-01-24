@@ -1,0 +1,50 @@
+
+.text-muted{
+    color: red;
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+.mat-raised-button{
+    background-color: blue;
+    color: white;
+}
+
+#maincontent{
+    margin-top: 20px;
+}
+
+#imagediv{
+    margin-top:20px;
+    width: 100px;
+    height: 100px;
+}
+.subnav{
+    background-color: #ff4081;
+}
+
+#searchbar{
+    display: flex;
+}
+#searchbar div{
+    flex:1;
+}
+
+#searchbar div label{
+    color:white;
+    font-style: italic;
+}
+
+.subnav .mat-input-element{
+    color: white;
+    font-weight: bold;
+}
+
+.expand{
+    display: flex;
+}
+.expand div{
+    flex: 1;
+}

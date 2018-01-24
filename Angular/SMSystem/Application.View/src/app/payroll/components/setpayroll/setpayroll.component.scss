@@ -1,0 +1,55 @@
+.maincontent{
+    margin-top: 20px;
+
+    .fullwidth{
+        width: 100%;
+    }
+    .mat-card{
+        
+    }
+    .flex-container{
+        display: flex;
+        flex-wrap: wrap;
+        width: 245px;
+    }
+    
+        .calender-header{
+            height:25px;
+            width: 25px;
+            margin: 5px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        .calender-item{
+            height:25px;
+            width: 25px;
+            margin: 5px;
+            text-align: center;
+            background-color: green;
+            color: white;
+        }
+
+        .calender-item:not(.inactive):hover{
+            cursor: pointer;
+        }
+        
+        .inactive{
+            background-color: white;
+        }
+
+        .clicked{
+            background-color: red;
+        }
+
+    
+        .mat-raised-button{
+            background-color: blue;
+            color: white;
+        }
+
+        .savebutton{
+            padding-top: 20px;
+        }
+}

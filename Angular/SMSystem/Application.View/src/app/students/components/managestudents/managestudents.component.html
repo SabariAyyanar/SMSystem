@@ -1,0 +1,224 @@
+<mat-card-content color="primary" class="subnav">
+  <div class="container" id="searchbar">
+  <div>
+      <label for="searchclass">Class</label>
+
+      <mat-form-field>
+
+          <mat-select matTooltip="Filter Class for Student" 
+          [(ngModel)]="search.studentclass" (ngModelChange)="filterobject()" name="searchclass">  
+            <mat-option *ngFor="let currentclass of class" [value]="currentclass.Id">
+              {{currentclass.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div>
+        <label for="searchdepartment" #lab>Department</label>
+
+        <mat-form-field>
+            <mat-select  matTooltip="Filter department for student" [(ngModel)]="search.department"
+            (ngModelChange)="filterobject()" name="searchdepartment"> 
+              <mat-option *ngFor="let currentdepartment of department" [value]="currentdepartment.Id">
+                {{currentdepartment.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          
+    </div>
+      <div>
+          <label for="searchstudent">Student Name</label>
+          <mat-input-container>
+              <input matInput (keyup) = "filterobject()" matTooltip="Filter student name" id="searchstudent" [(ngModel)]="search.firstname" name="searchstudent">
+            </mat-input-container>
+          </div>
+        </div>
+</mat-card-content>
+
+<div class="container" id="maincontent">
+<div class="row">
+<form (ngSubmit) = "saveStudent()" #studenform="ngForm">
+  <div class="col-lg-12">
+    <table cellspacing="0" class="fullwidth">
+        <tr>
+            <td>
+              <mat-input-container>
+                <input matInput placeholder="Student ID" matTooltip="ID to be given to student" id="studentid" [(ngModel)]="student.Id" name="studentid">
+              </mat-input-container>
+            </td>                
+          <td >
+              <mat-radio-group required="" [(ngModel)]="student.gender" matTooltip="Gender of student" #gender="ngModel" name="gender">
+                  <mat-radio-button value="male" name="male">Male</mat-radio-button>
+                  <mat-radio-button  value="female" name="female">Female</mat-radio-button>
+                </mat-radio-group>
+          </td>
+          <td>
+            <mat-input-container>
+              <input matInput required="" #firstname="ngModel" placeholder="First Name" matTooltip="First name of student" id="firstname" [(ngModel)]="student.firstname" name="firstname">
+            </mat-input-container>
+          </td>
+          <td>
+              <mat-input-container>
+                <input matInput placeholder="last Name" required="" #lastname="ngModel" matTooltip="Family name of student" id="lasttname" [(ngModel)]="student.lastname" name="lastname">
+              </mat-input-container>
+            </td>
+          </tr>
+      <tr>
+          <td>                      
+            <mat-input-container>
+                <textarea matInput placeholder="Address" matTooltip="address of residence" #address id="address" [(ngModel)]="student.address" name="address">
+                  </textarea>                      
+                <mat-hint align="end">
+                  143/C2 or P.O.Box
+                </mat-hint>
+            </mat-input-container>                  
+          </td>
+          <td>
+              <mat-form-field>
+                <input matTooltip="Student Date Of Birth" required="" #mydatepicker="ngModel" placeholder="Date Of Birth" name="dateofbirth" [(ngModel)]="student.dateofbirth" matInput [matDatepicker]="myDatepicker">
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker>Select</mat-datepicker>            
+              </mat-form-field>
+            </td>
+            <td>
+              <mat-form-field>
+                  <mat-select #studentclass="ngModel" required=""  placeholder="Class" matTooltip="Class to be enrolled" 
+                  [(ngModel)]="student.studentclassId" name="class">  
+                    <mat-option *ngFor="let currentclass of class" [value]="currentclass.Id">
+                      {{currentclass.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </td>
+          <td>
+              <mat-form-field>
+                  <mat-select  placeholder="Department" #departments="ngModel" required="" matTooltip="Department(house/course) to join" [(ngModel)]="student.departmentId" name="department"> 
+                    <mat-option *ngFor="let currentdepartment of department" [value]="currentdepartment.Id">
+                      {{currentdepartment.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-input-container>
+                    <input matInput placeholder="Mother's Name" matTooltip="Name of student mother" id="mothername" [(ngModel)]="student.mothername" name="mothername">
+                  </mat-input-container>
+            </td>
+            <td>
+                <mat-input-container>
+                <input matInput placeholder="Father's Name" matTooltip="Name of student father" id="fathername" [(ngModel)]="student.fathername" name="fathername">
+                </mat-input-container>
+            </td>
+            <td>
+              <mat-form-field>
+                  <mat-select  placeholder="Region" matTooltip="Region of residence" [(ngModel)]="student.regionId" name="region"> 
+                    <mat-option *ngFor="let currentregion of region" [value]="currentregion.Id">
+                      {{currentregion.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          </td>
+          <td>
+              <mat-input-container>
+                 <input matInput placeholder="City" matTooltip="City of residence" id="city" [(ngModel)]="student.city" name="city">
+               </mat-input-container>
+          </td>
+        </tr>
+      <tr>                
+        <td>
+            <mat-input-container>
+                <input matInput placeholder="Place Of Birth" matTooltip="Place student was born" id="placeofbirth" [(ngModel)]="student.placeofbirth" name="placeofbirth">
+            </mat-input-container>
+        </td>
+          <td>
+              <mat-input-container>
+                <input matInput placeholder="Contact Number" required="" matTooltip="phone number of student/parents" #phone="ngModel" id="phone" [(ngModel)]="student.phone" name="phone">
+                  <mat-hint align="end">
+                    233571683961
+                  </mat-hint>
+              </mat-input-container>
+          </td>
+          <td>
+              <mat-input-container>
+                <input matInput placeholder="Email Address" matTooltip="email of student/parant" #email id="email" [(ngModel)]="student.email" name="eamil">
+                  <mat-hint align="end">
+                    example@gmail.com
+                  </mat-hint>
+              </mat-input-container>
+          </td>
+           <td>
+            <mat-form-field>
+                <mat-select  placeholder="Student Status" matTooltip="type of student" #studentstatus id="studentstatus" name="studentstatus" [(ngModel)]="student.studentstatusId"> 
+                  <mat-option *ngFor="let currentstatus of studentstatuses" [value]="currentstatus.Id">
+                    {{currentstatus.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-hint align="end">
+                    Category Of Student
+                  </mat-hint>
+              </mat-form-field>
+        </td>
+      </tr>
+      <tr>                    
+                <td>
+                    <mat-input-container *ngIf="studentstatus.value==2">
+                        <input matInput placeholder="Scholarship Percentage" matTooltip="Percentage of scholarship to receive" [(ngModel)]="student.scholarshippercent" #scholarshippercent id="scholarshippercent"  name="scholarshippercent">
+                          <mat-hint align="end">
+                            Scholarship Percentage For Student
+                          </mat-hint>
+                      </mat-input-container>
+                </td>
+                <td>
+                        <div id="imagediv">
+                          <img  [src]="student.imagesrc" matTooltip="Selected image of student" id="img"  class="img-responsive mat-card-image"/>
+                        </div> 
+                  </td>
+                  <td>
+                    <div class="text-center">
+                        <input type="file" id="studentimage"  (change)="onfile($event)"  name="studentimage" style="visibility: hidden">
+                        <label for="studentimage" matTooltip="Click to upload student image" class="btn btn-primary">
+                          UPLOAD STUDENT IMAGE
+                        </label>
+                      </div>
+                  </td>
+                  <td>
+                </td>                      
+    </tr>
+    <tr>
+      <td>
+        <p style="margin-top:20px;"id="savestudent" name="savestudent" matTooltip="Button will be enabled when input fields are valid">
+            <button [disabled]="!studenform.form.valid || !updatedeletedisable" type="submit" matTooltip="Click to Save a new student" mat-raised-button>
+                Save Student
+            </button>
+          </p>
+    </td>  
+    <td>
+      <p style="margin-top:20px;"id="updatestudent" name="updatestudent" matTooltip="Button will be enabled when input fields are valid">
+          <button [disabled]="updatedeletedisable" type="button" (click)="updateStudent()" matTooltip="Click to update student" mat-raised-button>
+              Update Student
+          </button>
+        </p>
+  </td>  
+  <td>
+      <p style="margin-top:20px;" id="removestudent" name="removestudent">
+          <button [disabled]="updatedeletedisable" type="button" (click)="RemoveStudent()" matTooltip="Click to remove current student" mat-raised-button>
+              Remove Student
+          </button>
+        </p>
+  </td>  
+  <td>
+    <p style="margin-top:20px;" id="createstudent" name="createstudent">
+        <button [disabled]="" type="button" (click)="clearInputFields()" matTooltip="Click to empty all fields" mat-raised-button>
+            Clear Fields
+        </button>
+      </p>
+</td>  
+    </tr>
+    </table>
+    </div>
+</form>
+</div>
+</div>

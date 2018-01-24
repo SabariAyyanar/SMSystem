@@ -1,0 +1,112 @@
+<div class="container" id="maincontainer">
+    <div class="row">
+  
+      <!---  DIV FOR INCOME INPUT FIELD -->
+      <div class="col-lg-4">
+          <form [formGroup]="expenseform">
+              <mat-card>
+                  <mat-card-header>
+                      <div mat-card-avatar>
+                          <mat-icon>money_off</mat-icon>
+                      </div>
+                      <mat-card-title>EDIT EXPENSE</mat-card-title>
+                      <mat-card-subtitle>ADD,UPDATE or REMOVE Expense</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+                        <div>
+                          <div>
+  
+                      <div>
+                      <mat-form-field>
+                        <mat-select  formControlName="expensecategoryId" placeholder="Expense Category">  
+                          <mat-option *ngFor="let currentcategory of allexpensecategory"  [value]="currentcategory.Id">
+                            {{currentcategory.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+  
+                      <div>
+                        <mat-input-container>
+                          <input matInput placeholder="Description"
+                          formControlName="description"
+                          matTooltip="Description Of Expense">
+                            <mat-hint align="end">
+                              Description
+                            </mat-hint>
+                        </mat-input-container>
+                      </div>
+  
+                      <div>
+                          <mat-input-container>
+                            <input matInput placeholder="Amount"
+                            formControlName="amount" numberonly="true"
+                            matTooltip="Enter Amount of Expense Incurred">
+                              <mat-hint align="end">
+                                Income Amount
+                              </mat-hint>
+                          </mat-input-container>
+                        </div>
+  
+                        <div>
+                          <mat-form-field>
+                                    <input matTooltip="Date When Expense Was Incurred" placeholder="Date Of Expense"
+                                     matInput [matDatepicker]="myDatepicker" formControlName="dateofexpense">
+                                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                                    <mat-datepicker #myDatepicker>Select</mat-datepicker> 
+                                    <mat-hint align="end">
+                                        Date Of Expense
+                                    </mat-hint>           
+                            </mat-form-field>
+                          </div>
+  
+                    </div>
+                    </div>
+              </mat-card-content>
+              <mat-card-footer >
+                <div class="flex-container">
+                    <div class="flex-container-item">
+                      <button type="button" mat-raised-button [disabled]="isUpdate" (click)="AddNewExpense()">ADD</button>
+                    </div>
+                    <div class="flex-container-item">
+                        <button type="button" mat-raised-button [disabled]="!isUpdate" (click)="UpdateOldExpense()">UPDATE</button>
+                    </div>
+                    <div class="flex-container-item">
+                          <button type="button"  mat-raised-button (click)="ClearExpenseForm()" [disabled]="expenseform.pristine">CANCEL</button>
+                    </div>
+                  </div>
+              </mat-card-footer>        
+            </mat-card>
+          </form>
+      </div>
+      <!--- END OF DIV FOR INCOME INPUT FIELD -->
+  
+      <!--- DIV FOR GRID -->
+      <div class="col-lg-8">
+          <kendo-grid [data]="view | async"
+          [pageSize]="gridState.take"
+          [skip]="gridState.skip"
+          [sort]="gridState.sort"
+          filterable="menu"
+          [pageable]="true"
+          [selectable]="true"
+          (pageChange)="pageChange($event)"
+          (dataStateChange)="onStateChange($event)"
+          (edit)="editHandler($event)"
+          (remove)="removeHandler($event)"
+          [navigable]="true">
+          <kendo-grid-column field="expensecategory.name" editor="string" title="Category"></kendo-grid-column>
+          <kendo-grid-column field="description" editor="string" title="Description"></kendo-grid-column>
+          <kendo-grid-column field="amount" editor="string" title="Amount"></kendo-grid-column>
+          <kendo-grid-column field="dateofexpense" editor="date" title="Date"></kendo-grid-column>
+            <kendo-grid-command-column title="command" width="220">
+                <ng-template kendoGridCellTemplate>
+                    <button kendoGridEditCommand class="k-primary">Edit</button>
+                    <button kendoGridRemoveCommand>Remove</button>
+                </ng-template>
+            </kendo-grid-command-column>
+          </kendo-grid>
+        </div>
+        <!--- END OF DIV FOR GRID -->
+    </div>
+  </div>

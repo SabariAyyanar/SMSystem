@@ -1,0 +1,129 @@
+
+      <mat-card-content color="primary" class="subnav">
+          <div class="container" id="searchbar">
+          <div>
+              <label for="paymentclass">Class</label>
+              <mat-form-field>
+                  <mat-select #studentfeesclass="ngModel" (change)="filterObjectForPayment()" [(ngModel)]="searchpayment.studentclass" name="paymentclass">  
+                    <mat-option *ngFor="let currentclass of class" [value]="currentclass.Id">
+                      {{currentclass.name}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <label for="paymentdepartment" #labpayment>Department</label>
+                <mat-form-field>
+                    <mat-select #feesdepartments="ngModel" (change)="filterObjectForPayment()" [(ngModel)]="searchpayment.department" name="paymentdepartment"> 
+                      <mat-option *ngFor="let currentdepartment of department" [value]="currentdepartment.Id">
+                        {{currentdepartment.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </div>
+              <div>
+                  <label for="searchpaymentstudent">Student Name</label>
+                  <mat-input-container>
+                      <input matInput (keyup) = "filterObjectForPayment()" matTooltip="Filter student name" id="searchstudent" [(ngModel)]="searchpayment.firstname" name="searchpaymentstudent">
+                    </mat-input-container>
+                  </div>
+                </div>
+        </mat-card-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <mat-card>
+            <mat-card-content *ngIf="currentpaymentstudent[0]">
+              <div class="expand">
+                  <div> Name:   <strong>{{currentpaymentstudent[0].firstname + " " + currentpaymentstudent[0].lastname}} </strong> </div>
+                  <div> Class:   <strong> {{class[currentpaymentstudent[0].studentclass-1].name}} </strong></div>
+                  <div>Department:  <strong>{{department[currentpaymentstudent[0].department-1].name}}</strong></div>
+            </div>
+              <div class="expand">
+                <div>Amount To Pay: <strong>{{studentpayment.amounttopay}} </strong></div>
+                <div>Paid:  <strong>{{studentpayment.amountpaid}} </strong></div>
+                <div>Owing: <strong>  {{studentpayment.amountowing}} </strong></div>
+            </div>
+            </mat-card-content>
+          </mat-card>
+          <form (ngSubmit)="addNewPayment()" #paymentform="ngForm">
+          <table class="fullwidth">
+            <tr>
+              <td>
+                  <mat-input-container>
+                      <input numberonly="true" matInput placeholder="Amount" required="" matTooltip="phone number of student/parents" #amount="ngModel" id="amount" [(ngModel)]="paymenthistorytosave.amount" name="amount">
+                    </mat-input-container>
+              </td>
+              <td>
+                  <mat-input-container>
+                      <input  matInput placeholder="Amount in words" required="" matTooltip="phone number of student/parents" #amountinwords="ngModel" id="amountinwords" [(ngModel)]="paymenthistorytosave.amountinwords" name="amountinwords">
+                        <mat-hint align="end">
+                          Amount in words
+                        </mat-hint>
+                    </mat-input-container>
+              </td>           
+            </tr>
+            <tr>
+              <td>
+                  <mat-form-field>
+                      <input matTooltip="Payment Date" required="" #mypaymentdatepicker="ngModel" placeholder="Payment Date" name="mypaymentdatepicker" [(ngModel)]="paymenthistorytosave.paymentdate" matInput [matDatepicker]="mypaymentdatepicker">
+                      <mat-datepicker-toggle matSuffix [for]="mypaymentdatepicker"></mat-datepicker-toggle>
+                      <mat-datepicker #mypaymentdatepicker>Select</mat-datepicker>
+                      <mat-hint align="end">
+                          Select Date Of Payment
+                        </mat-hint>        
+                    </mat-form-field>
+              </td>
+              <td>
+                      <p style="margin-top:20px;"id="savestudent" name="savestudent" matTooltip="Button will be enabled when input fields are valid">
+                          <button [disabled]="!paymentform.form.valid || makepaymentbuttondisable" matTooltip="Click to make payment" mat-raised-button>
+                              Make Payment
+                          </button>
+                        </p>
+              </td>
+              <td>
+
+              </td>
+            </tr>
+          </table>
+        </form>
+        </div>
+        <div class="col-lg-6">
+          <table *ngIf="allpayment" class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                    Amount
+                  </th>
+                  <th>
+                      Amount In Words
+                    </th>
+                  <th>
+                      Date
+                    </th>
+                    <th>
+                      Action
+                    </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let payment of allpayment">
+                <td>{{payment.student.firstname + " " + payment.student.lastname}}</td>
+                <td>{{payment.amount}}</td>
+                <td>{{payment.amountinwords}}</td>
+                <td>{{payment.paymentdate | date}}</td>
+                <td> 
+                  <button (click)="editPaymentHistory(payment)" mat-raised-button>
+                    Edit
+                </button>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+

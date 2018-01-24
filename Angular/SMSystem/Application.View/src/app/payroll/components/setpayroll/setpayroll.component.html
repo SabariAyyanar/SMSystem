@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+          <div class="maincontent">
+          <div class="col-lg-4">
+            <div>
+                <mat-form-field>
+                    <input #mydatepickerstart="ngModel" placeholder="Start Date" name="startdate" 
+                    [(ngModel)]="startdate" matInput [matDatepicker]="mydatepickerstart" 
+                    (ngModelChange)="createCalender()">
+                    <mat-datepicker-toggle matSuffix [for]="mydatepickerstart"></mat-datepicker-toggle>
+                    <mat-datepicker #mydatepickerstart>Select</mat-datepicker>            
+                  </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <input #mydatepickerend="ngModel"  placeholder="End Date" name="enddate"
+                     [(ngModel)]="enddate" matInput [matDatepicker]="mydatepickerend" 
+                     (ngModelChange)="createCalender()">
+                    <mat-datepicker-toggle  matSuffix [for]="mydatepickerend"></mat-datepicker-toggle>
+                    <mat-datepicker #mydatepickerend>Select</mat-datepicker>            
+                  </mat-form-field>
+            </div>
+              
+            <div>
+              <mat-checkbox name="isSundayIgnored" [(ngModel)]="isSaturdayIgnored"
+               (ngModelChange)="IgnoreSaturday()">Remove Saturday</mat-checkbox>         
+            </div>
+              
+            <div>
+              <mat-checkbox name="isSundayIgnored" [(ngModel)]="isSundayIgnored"
+              (ngModelChange)="IgnoreSunday()">Remove Sunday</mat-checkbox>         
+            </div>
+            <div class="savebutton">
+                <button type="button" (click)="SaveNewPayrollDates()" mat-raised-button>SAVE</button>
+            </div>
+          </div>
+              <div class="col-lg-4">
+                        <div class="flex-container">
+                          <div class="calender-header">S</div>
+                          <div class="calender-header">M</div>
+                          <div class="calender-header">T</div>
+                          <div class="calender-header">W</div>
+                          <div class="calender-header">T</div>
+                          <div class="calender-header">F</div>
+                          <div class="calender-header">S</div>
+                          <div class="calender-item" (click)="isSelected(day)"
+                           *ngFor="let day of daysArr" [ngClass]="applyClass(day)">
+                            <div> {{day?.date()}}</div>
+                  </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

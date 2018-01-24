@@ -1,0 +1,212 @@
+<div class="container">
+    <div class="row">
+          <div class="col-lg-4">
+            <mat-card>
+              <mat-card-header>
+                  <h4><strong>Employee Category</strong></h4>
+              </mat-card-header>
+              <mat-card-content>                     
+    <table class="fullwidth">
+        <thead>
+          <th>Type</th>
+          <th>Rate</th>
+          <th>Action</th>
+        </thead>
+        <tbody *ngIf="currentpayrollratesincontext">
+          <tr>
+            <td>Workday</td>
+            <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.workday" name="workday"></td>
+            <td><button matTooltip="Click to Update workday Rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+          </tr>
+          <tr>
+              <td>Workday Ovetime</td>
+              <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.workdayovertime"></td>
+              <td><button matTooltip="Click to Update workday overtime Rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+            </tr>
+            <tr>
+                <td>Saturday</td>
+                <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.saturday"></td>
+                <td><button matTooltip="Click to Update saturday Rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+              </tr>
+              <tr>
+                  <td>Saturday Overtime</td>
+                  <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.saturdayovertime"></td>
+                  <td><button matTooltip="Click to Update saturday overtime Rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+                </tr>
+          <tr>
+              <td>Sunday</td>
+              <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.sunday"></td>
+              <td><button matTooltip="Click to Update sunday Rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+            </tr>
+            <tr>
+                <td>Sunday Overtime</td>
+                <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.sundayovertime"></td>
+                <td><button matTooltip="Click to Update sunday overtime Rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+              </tr>
+          <tr>
+              <td>Holiday</td>
+              <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.holiday"></td>
+              <td><button matTooltip="Click to Update holiday rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+            </tr>
+            <tr>
+                <td>Holiday Overtime</td>
+                <td><input type="text" numberonly="true" [(ngModel)]="currentpayrollratesincontext.holidayovertime"></td>
+                <td><button matTooltip="Click to Update holiday overtime rate" (click)="SavePayrollRate()" mat-raised-button>UPDATE</button></td>
+              </tr>
+        </tbody>
+      </table>
+              </mat-card-content>
+            </mat-card>
+        
+          </div>
+
+          <div class="col-lg-4">
+              <mat-card>
+                <mat-card-header>
+                    <h4><strong>Tax Rates</strong></h4>
+                </mat-card-header>
+                <mat-card-content>                     
+                    <div>
+                        <mat-form-field *ngIf="alltaxrates">
+                            <mat-select  placeholder="Select Tax Level" (change)="displayOldTaxRates()"   matTooltip="Select Tax Level to modify"
+                                    [(ngModel)]="currenttaxratesincontext.Id" name="taxratelevel" #taxlevel="ngModel"> 
+                              <mat-option  *ngFor="let currenttax of alltaxrates;" [value]="currenttax.Id">
+                                {{currenttax.name}} 
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                      <div>
+                        <mat-input-container>
+                            <input matInput 
+                            [(ngModel)]="currenttaxratesincontext.name"  name="taxratename">
+                          <mat-hint align="end">
+                              New Tax Level Name
+                            </mat-hint>
+                          </mat-input-container>
+                        </div>
+                      <div>
+                        <mat-input-container>
+                            <input matInput numberonly="true"
+                            [(ngModel)]="currenttaxratesincontext.amount" name="enteredtaxrateamount">
+                          <mat-hint align="end">
+                              Tax Amount
+                            </mat-hint>
+                          </mat-input-container>
+                        </div>
+                        <div>
+                          <mat-input-container>
+                              <input matInput numberonly="true"
+                              [(ngModel)]="currenttaxratesincontext.rate" name="enteredtaxratepercentage">
+                            <mat-hint align="end">
+                                Tax Rate
+                              </mat-hint>
+                            </mat-input-container>
+                          </div>
+                        <div class="row">
+                            <button type="button" (click)="addNewTax()" matTooltip="Click to add new Tax Rate" mat-raised-button>
+                                ADD
+                            </button>
+                            <button (click)="updateOldTax()" matTooltip="Click to update Tax Rate" mat-raised-button>
+                                UPDATE
+                            </button>
+                            <button (click)="removeOldTax()" matTooltip="Click to Remove Tax Rate" mat-raised-button>
+                                REMOVE
+                            </button>
+                        </div>
+                </mat-card-content>
+              </mat-card>
+          
+            </div>
+
+          <div class="col-lg-4">
+              <mat-card>
+                <mat-card-header>
+                    <h4><strong>SSNIT</strong></h4>
+                </mat-card-header>
+                <mat-card-content *ngIf="currentssnitratesincontext">                     
+                    <div>
+                        <mat-input-container>
+                            <input matInput
+                            [(ngModel)]="currentssnitratesincontext.name"  name="enteredssnitname">
+                          <mat-hint align="end">
+                              SSNIT Name
+                            </mat-hint>
+                          </mat-input-container>
+                    </div>
+                      <div>
+                        <mat-input-container>
+                            <input matInput numberonly="true"
+                            [(ngModel)]="currentssnitratesincontext.Rate"  name="enteredssnitrate">
+                          <mat-hint align="end">
+                              SSNIT Rate
+                            </mat-hint>
+                          </mat-input-container>
+                        </div>
+                        <div class="row">
+                            <button type="button" (click)="saveSSNITRate()" 
+                            matTooltip="Click to SAVE SSNIT Rate" mat-raised-button>
+                                SAVE
+                            </button>
+                        </div>
+                </mat-card-content>
+              </mat-card>
+          
+            </div>
+
+            <div class="col-lg-4">
+                <mat-card>
+                  <mat-card-header>
+                      <h4><strong>ALLOWANCES</strong></h4>
+                  </mat-card-header>
+                  <mat-card-content>                     
+                      <div>
+                          <mat-form-field *ngIf="allpayrollallowances">
+                              <mat-select (change)="displayOldAllowanceAmount()"  placeholder="Select Allowance"   matTooltip="Select Allowance to modify"
+                                      [(ngModel)]="currentpayrollallowanceincontext.Id" name="payrollallowance"
+                                       > 
+                                <mat-option *ngFor="let currentallowance of allpayrollallowances;" 
+                                [value]="currentallowance.Id">
+                                  {{currentallowance.name}}
+                                </mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                      </div>
+                        <div>
+                          <mat-input-container>
+                              <input matInput
+                              [(ngModel)]="currentpayrollallowanceincontext.name"  name="enteredallowancename">
+                            <mat-hint align="end">
+                                New Allowance Name
+                              </mat-hint>
+                            </mat-input-container>
+                          </div>
+                          <div>
+                            <mat-input-container>
+                                <input matInput numberonly="true"
+                                [(ngModel)]="currentpayrollallowanceincontext.amount"  name="enteredallowanceamount">
+                              <mat-hint align="end">
+                                  Amount
+                                </mat-hint>
+                              </mat-input-container>
+                            </div>
+                          <div class="row">
+                              <button type="button" (click)="addNewPayrollAllowance()" 
+                              matTooltip="Click to add new Allowance" mat-raised-button>
+                                  ADD
+                              </button>
+                              <button (click)="updateOldPayrollAllowance()"
+                               matTooltip="Click to update Allowance" mat-raised-button>
+                                  UPDATE
+                              </button>
+                              <button (click)="removeOldPayrollAllowance()" 
+                              matTooltip="Click to Remove Allowance" mat-raised-button>
+                                  REMOVE
+                              </button>
+                          </div>
+                  </mat-card-content>
+                </mat-card>
+            
+              </div>
+    </div>
+  </div>

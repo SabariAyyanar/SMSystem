@@ -1,0 +1,113 @@
+<div class="container">
+  <div class="row">
+      <div class="col-lg-4">
+          <mat-card>
+              <mat-card-header>
+                  <h4><strong>EMAIL</strong></h4>
+              </mat-card-header>
+              <mat-card-content *ngIf="currnetemailinfoincontext">    
+                  <div>
+                        <mat-checkbox name="deactivated" [(ngModel)]="currnetemailinfoincontext.deactivated">Deactivate Email</mat-checkbox>
+                   
+                      </div>
+                      <div>
+                          <mat-input-container>                          
+                              <textarea matInput placeholder="Student Reg Template" [(ngModel)]="currnetemailinfoincontext.studentemplateregistration" name="studentregistration">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Student registration
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div>
+                          <mat-input-container>                         
+                              <textarea matInput placeholder="Employee Reg Template" [(ngModel)]="currnetemailinfoincontext.employeeemplateregistration" name="employeeregistration">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Employee registration
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div>
+                          <mat-input-container>                                                   
+                              <textarea matInput placeholder="Fee Template"  [(ngModel)]="currnetemailinfoincontext.studentemplatefee" name="studentfee">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Student fee
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div>
+                          <mat-input-container>                                                   
+                              <textarea matInput placeholder="Payroll Template"  [(ngModel)]="currnetemailinfoincontext.employeeemplatepayroll" name="employeepayroll">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Employee payroll
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div class="row">
+                          <button (click)="saveEmailInfo()" matTooltip="Click to save Email Templates" mat-raised-button>
+                              SAVE
+                          </button>
+                      </div>
+              </mat-card-content>
+          </mat-card>          
+      </div>
+
+      <div class="col-lg-4">
+          <mat-card>
+              <mat-card-header>
+                  <h4><strong>SMS</strong></h4>
+              </mat-card-header>
+              <mat-card-content *ngIf="currentsmsinfoincontext">    
+                  <div>
+                        <mat-checkbox name="smsdeactivated" [(ngModel)]="currentsmsinfoincontext.deactivated">Deactivate SMS</mat-checkbox>
+                   
+                      </div>
+                      <div>
+                          <mat-input-container>                          
+                              <textarea matInput placeholder="Student Reg Template" [(ngModel)]="currentsmsinfoincontext.studentemplateregistration" name="smsstudentregistration">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Student registration
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div>
+                          <mat-input-container>                         
+                              <textarea matInput placeholder="Employee Reg Template" [(ngModel)]="currentsmsinfoincontext.employeeemplateregistration" name="smsemployeeregistration">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Employee registration
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div>
+                          <mat-input-container>                                                   
+                              <textarea matInput placeholder="Fee Template"  [(ngModel)]="currentsmsinfoincontext.studentemplatefee" name="smsstudentfee">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Student fee
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div>
+                          <mat-input-container>                                                   
+                              <textarea matInput placeholder="Payroll Template"  [(ngModel)]="currentsmsinfoincontext.employeeemplatepayroll" name="smsemployeepayroll">
+                                </textarea> 
+                          <mat-hint align="end">
+                              Template for Employee payroll
+                          </mat-hint>
+                          </mat-input-container>
+                      </div>
+                      <div class="row">
+                          <button (click)="saveSMSInfo()" matTooltip="Click to save SMS Templates" mat-raised-button>
+                              SAVE
+                          </button>
+                      </div>
+              </mat-card-content>
+          </mat-card>          
+      </div>
+  </div>
+</div>
