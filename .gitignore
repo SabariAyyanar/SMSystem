@@ -1,0 +1,4 @@
+/packages
+/artifacts
+*.exe
+/node_modules
