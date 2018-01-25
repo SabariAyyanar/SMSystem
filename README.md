@@ -40,7 +40,7 @@ It contains 5 projects. The following are the description for the Projects:
                       </p>                
           </li>  
           <li>
-                      <h3> ANGULAR PROJECT <h3>
+                      <h3> ANGULAR PROJECT </h3>
                       <p>                        
                         This projecct contains all the user interface and typescript. It is use to 
                         display relevant data to the end user. It contains modules,components,directives
