@@ -1,3 +1,5 @@
+**Version 1.0.0.0**
+
 ## SMSystem
 
 SMSystem is a name of the school management system we created. It is used to manage 
@@ -87,6 +89,15 @@ It contains 5 projects. The following are the description for the Projects:
      Login using the defaults username and password SA and SA (username and password in lower case) 
     </li>
   </ol>
+  
+#### Graphics for commands
+  
+  
+![ng serve](https://user-images.githubusercontent.com/33688838/35364634-1bc6bb1e-0168-11e8-8993-0cf6e884b6a3.PNG)
+
+![nodemon](https://user-images.githubusercontent.com/33688838/35364756-d38c8e90-0168-11e8-87bd-cec5da16e622.PNG)
+
+![localhost](https://user-images.githubusercontent.com/33688838/35364825-3064948c-0169-11e8-8d45-601e1671e2a1.PNG)
 
 ## CONTRIBUTORS
 
@@ -111,9 +122,5 @@ LICENSE UNDER [MIT LICENSE](LICENSE)
 ## COPYRIGHT
 
 (c) KSoftNet Inc. 2017.
-
-![ng serve](https://user-images.githubusercontent.com/33688838/35364634-1bc6bb1e-0168-11e8-8993-0cf6e884b6a3.PNG)
-
-![nodemon](https://user-images.githubusercontent.com/33688838/35364756-d38c8e90-0168-11e8-87bd-cec5da16e622.PNG)
 
 
