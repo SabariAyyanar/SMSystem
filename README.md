@@ -114,3 +114,6 @@ LICENSE UNDER [MIT LICENSE](LICENSE)
 
 ![ng serve](https://user-images.githubusercontent.com/33688838/35364634-1bc6bb1e-0168-11e8-8993-0cf6e884b6a3.PNG)
 
+![nodemon](https://user-images.githubusercontent.com/33688838/35364756-d38c8e90-0168-11e8-87bd-cec5da16e622.PNG)
+
+
