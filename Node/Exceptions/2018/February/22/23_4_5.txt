@@ -1,0 +1,1 @@
+{"code":"ECONNECTION","errno":"ENOTFOUND","syscall":"getaddrinfo","hostname":"smtp.gmail.com","host":"smtp.gmail.com","port":465,"command":"CONN"}
