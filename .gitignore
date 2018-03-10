@@ -1,4 +1,5 @@
 packages/
+packages-lock/
 artifacts/
 *.exe
 node_modules/
