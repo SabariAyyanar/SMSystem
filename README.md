@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 **Version 1.0.0.0**
+=======
+`Version 1.0.0.0`
+>>>>>>> 7dbed141ff739018d8534dd7766892a52b4794e2
 
 ## SMSystem
 
