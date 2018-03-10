@@ -10,7 +10,6 @@ namespace Application.Repository
 {
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-
         protected readonly DbContext Context;
         private ILog _ILog;
         public Repository(DbContext context)

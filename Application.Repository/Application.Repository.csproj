@@ -88,10 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityRepository\AllowanceRepository.cs" />
+    <Compile Include="EntityRepository\AppUserRoleRepository.cs" />
     <Compile Include="EntityRepository\BookRepository.cs" />
     <Compile Include="EntityRepository\BookTypeRepository.cs" />
     <Compile Include="EntityRepository\DepartmentRepository.cs" />
     <Compile Include="EntityRepository\EmployeeCategoryRepository.cs" />
+    <Compile Include="EntityRepository\EmployeeDataCollectionsRepository.cs" />
     <Compile Include="EntityRepository\EmployeeDocumentRepository.cs" />
     <Compile Include="EntityRepository\EmployeeLevelOfEducationRepository.cs" />
     <Compile Include="EntityRepository\EmployeeLoanHistoryRepository.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="EntityRepository\RoomRepository.cs" />
     <Compile Include="EntityRepository\SSNITRateRepository.cs" />
     <Compile Include="EntityRepository\StudentClassRepository.cs" />
+    <Compile Include="EntityRepository\StudentDataCollectionsRepository.cs" />
     <Compile Include="EntityRepository\StudentRepository.cs" />
     <Compile Include="EntityRepository\StudentStatusRepository.cs" />
     <Compile Include="EntityRepository\StudentSubjectRepository.cs" />
@@ -125,45 +128,48 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IAllowanceRepository.cs" />
-    <Compile Include="Interface\IBookRepository.cs" />
-    <Compile Include="Interface\IBookTypeRepository.cs" />
-    <Compile Include="Interface\IDepartmentRepository.cs" />
-    <Compile Include="Interface\IEmployeeCategoryRepository.cs" />
-    <Compile Include="Interface\IEmployeeDocumentRepository.cs" />
-    <Compile Include="Interface\IEmployeeLevelOfEducationRepository.cs" />
-    <Compile Include="Interface\IEmployeeLoanHistoryRepository.cs" />
-    <Compile Include="Interface\IEmployeeLoanRepository.cs" />
-    <Compile Include="Interface\IEmployeeRepository.cs" />
+    <Compile Include="Interface\Monetary\IAllowanceRepository.cs" />
+    <Compile Include="Interface\Users\IAppUserRoleRepository.cs" />
+    <Compile Include="Interface\Collections\IBookRepository.cs" />
+    <Compile Include="Interface\Collections\IBookTypeRepository.cs" />
+    <Compile Include="Interface\Collections\IDepartmentRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeCategoryRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeDataCollectionsRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeDocumentRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeLevelOfEducationRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeLoanHistoryRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeLoanRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeRepository.cs" />
     <Compile Include="ILog.cs" />
-    <Compile Include="Interface\IEmployeeTypeRepository.cs" />
-    <Compile Include="Interface\IExamRepository.cs" />
-    <Compile Include="Interface\IExpenseCategoryRepository.cs" />
-    <Compile Include="Interface\IExpenseRepository.cs" />
-    <Compile Include="Interface\IExternalHelperRepository.cs" />
-    <Compile Include="Interface\IHostelRepository.cs" />
-    <Compile Include="Interface\IIncomeCategoryRepository.cs" />
-    <Compile Include="Interface\IIncomeRepository.cs" />
-    <Compile Include="Interface\ILibraryRepository.cs" />
-    <Compile Include="Interface\IMarkRepository.cs" />
-    <Compile Include="Interface\IPaymentHistoryRepository.cs" />
-    <Compile Include="Interface\IPaymentRepository.cs" />
-    <Compile Include="Interface\IPayrollAllowancesRepository.cs" />
-    <Compile Include="Interface\IPayrollDateRepository.cs" />
-    <Compile Include="Interface\IPayrollRateRepository.cs" />
-    <Compile Include="Interface\IPayrollAmountRepository.cs" />
-    <Compile Include="Interface\IRegionRepository.cs" />
-    <Compile Include="Interface\IRoomRepository.cs" />
-    <Compile Include="Interface\ITransportRepository.cs" />
+    <Compile Include="Interface\Employee\IEmployeeTypeRepository.cs" />
+    <Compile Include="Interface\Student\IExamRepository.cs" />
+    <Compile Include="Interface\Monetary\IExpenseCategoryRepository.cs" />
+    <Compile Include="Interface\Monetary\IExpenseRepository.cs" />
+    <Compile Include="IExternalHelperRepository.cs" />
+    <Compile Include="Interface\Collections\IHostelRepository.cs" />
+    <Compile Include="Interface\Monetary\IIncomeCategoryRepository.cs" />
+    <Compile Include="Interface\Monetary\IIncomeRepository.cs" />
+    <Compile Include="Interface\Collections\ILibraryRepository.cs" />
+    <Compile Include="Interface\Student\IMarkRepository.cs" />
+    <Compile Include="Interface\Monetary\IPaymentHistoryRepository.cs" />
+    <Compile Include="Interface\Monetary\IPaymentRepository.cs" />
+    <Compile Include="Interface\Monetary\IPayrollAllowancesRepository.cs" />
+    <Compile Include="Interface\Monetary\IPayrollDateRepository.cs" />
+    <Compile Include="Interface\Monetary\IPayrollRateRepository.cs" />
+    <Compile Include="Interface\Monetary\IPayrollAmountRepository.cs" />
+    <Compile Include="Interface\Collections\IRegionRepository.cs" />
+    <Compile Include="Interface\Collections\IRoomRepository.cs" />
+    <Compile Include="Interface\Student\IStudentDataCollectionsRepository.cs" />
+    <Compile Include="Interface\Collections\ITransportRepository.cs" />
     <Compile Include="IRepository.cs" />
-    <Compile Include="Interface\ISSNITRateRepository.cs" />
-    <Compile Include="Interface\IStudentClassRepository.cs" />
-    <Compile Include="Interface\IStudentRepository.cs" />
-    <Compile Include="Interface\IStudentStatusRepository.cs" />
-    <Compile Include="Interface\IStudentSubjectRepository.cs" />
-    <Compile Include="Interface\ITaxRateRepository.cs" />
+    <Compile Include="Interface\Monetary\ISSNITRateRepository.cs" />
+    <Compile Include="Interface\Student\IStudentClassRepository.cs" />
+    <Compile Include="Interface\Student\IStudentRepository.cs" />
+    <Compile Include="Interface\Student\IStudentStatusRepository.cs" />
+    <Compile Include="Interface\Student\IStudentSubjectRepository.cs" />
+    <Compile Include="Interface\Monetary\ITaxRateRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
-    <Compile Include="Interface\IUserRepository.cs" />
+    <Compile Include="Interface\Users\IUserRepository.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="PlutoContext.cs" />
     <Compile Include="PlutoDbContextSeed.cs" />
@@ -177,6 +183,12 @@
       <Project>{199e85f4-c388-4528-869c-373faf39c1b6}</Project>
       <Name>BusinessEntity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityRepository\Employee\" />
+    <Folder Include="EntityRepository\Monetary\" />
+    <Folder Include="EntityRepository\Student\" />
+    <Folder Include="EntityRepository\Users\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

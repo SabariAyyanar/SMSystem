@@ -1,0 +1,127 @@
+<div class="container" id="maincontainer">
+    <div class="row">
+  
+      <!---  DIV FOR INCOME INPUT FIELD -->
+      <div class="col-lg-4">
+          <form [formGroup]="roomform">
+              <mat-card>
+                  <mat-card-header>
+                      <div mat-card-avatar>
+                          <mat-icon>money_off</mat-icon>
+                      </div>
+                      <mat-card-title>EDIT HOSTEL</mat-card-title>
+                      <mat-card-subtitle>ADD,UPDATE or REMOVE Hostel</mat-card-subtitle>
+                  </mat-card-header>
+                  <mat-card-content>
+
+                        <div>
+                          
+                        <div>
+  
+                      <div>
+                      <mat-form-field>
+                        <mat-select  formControlName="hostelId" placeholder="Select Hostel" (ngModelChange)="hostelChange($event)">  
+                          <mat-option *ngFor="let currenthostel of allhostel"  [value]="currenthostel.Id">
+                            {{currenthostel.name}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+
+                    <div *ngIf="allroomincontext">
+                        <mat-form-field>
+                          <mat-select  formControlName="Id" placeholder="Select Room" 
+                          (ngModelChange)="roomChange($event)">  
+                            <mat-option *ngFor="let currentroom of allroomincontext"
+                              [value]="currentroom.Id">
+                              {{currentroom.name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                      </div>
+  
+                      <div>
+                        <mat-input-container>
+                          <input matInput placeholder="Room Name"
+                          formControlName="name"
+                          matTooltip="Name To Be Given To The Room">
+                            <mat-hint align="end">
+                              Room Name
+                            </mat-hint>
+                        </mat-input-container>
+                      </div>
+  
+                      <div>
+                          <mat-input-container>
+                            <input matInput placeholder="Cost" numberonly="true"
+                            formControlName="costperroom" numberonly="true"
+                            matTooltip="Enter Amount To Be Charged For The Room">
+                              <mat-hint align="end">
+                                Cost Per Student
+                              </mat-hint>
+                          </mat-input-container>
+                        </div>
+
+                        <div>
+                            <mat-input-container>
+                              <input matInput placeholder="Number" numberonly="true"
+                              formControlName="studentperroom" numberonly="true"
+                              matTooltip="Enter Number of Student That Can Occupy Room">
+                                <mat-hint align="end">
+                                  Number Of People
+                                </mat-hint>
+                            </mat-input-container>
+                          </div>
+  
+  
+                    </div>
+                    </div>
+              </mat-card-content>
+              <mat-card-footer >
+                <div class="flex-container">
+                    <div class="flex-container-item">
+                      <button type="button" mat-raised-button [disabled]="isUpdate" (click)="AddNewRoom()">ADD</button>
+                    </div>
+                    <div class="flex-container-item">
+                        <button type="button" mat-raised-button [disabled]="!isUpdate" (click)="UpdateOldRoom()">UPDATE</button>
+                    </div>
+                    <div class="flex-container-item">
+                          <button type="button"  mat-raised-button (click)="ClearRoomForm()" [disabled]="roomform.pristine">CANCEL</button>
+                    </div>
+                  </div>
+              </mat-card-footer>        
+            </mat-card>
+          </form>
+      </div>
+      <!--- END OF DIV FOR INCOME INPUT FIELD -->
+  
+      <!--- DIV FOR GRID -->
+      <div class="col-lg-8">
+          <kendo-grid [data]="view | async"
+          [pageSize]="gridState.take"
+          [skip]="gridState.skip"
+          [sort]="gridState.sort"
+          filterable="menu"
+          [pageable]="true"
+          [selectable]="true"
+          (pageChange)="pageChange($event)"
+          (dataStateChange)="onStateChange($event)"
+          (edit)="editHandler($event)"
+          (remove)="removeHandler($event)"
+          [navigable]="true">
+          <kendo-grid-column field="hostel.name" editor="string" title="Hostel"></kendo-grid-column>
+          <kendo-grid-column field="hostel.location" editor="string" title="Location"></kendo-grid-column>
+          <kendo-grid-column field="name" editor="string" title="Name"></kendo-grid-column>
+          <kendo-grid-column field="costperroom" editor="string" title="Cost Per Room"></kendo-grid-column>
+          <kendo-grid-column field="studentperroom" editor="string" title="Student Per Room"></kendo-grid-column>
+            <kendo-grid-command-column title="command" width="220">
+                <ng-template kendoGridCellTemplate>
+                    <button kendoGridEditCommand class="k-primary">Edit</button>
+                    <button kendoGridRemoveCommand>Remove</button>
+                </ng-template>
+            </kendo-grid-command-column>
+          </kendo-grid>
+        </div>
+        <!--- END OF DIV FOR GRID -->
+    </div>
+  </div>

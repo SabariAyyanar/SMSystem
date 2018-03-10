@@ -21,7 +21,7 @@ namespace Application.Repository
         public DbSet<EmployeeDocument> employeedocuments { get; set; }
         public DbSet<Payment> payments { get; set; }
         public DbSet<PaymentHistory> paymenthistories { get; set; }
-        //public DbSet<PayrollAmount> payrollamounts { get; set; }
+        public DbSet<PayrollAmount> payrollamounts { get; set; }
         public DbSet<PayrollRate> payrollrates { get; set; }
         public DbSet<TaxRate> taxrates { get; set; }
         public DbSet<SSNITRate> ssnitrates { get; set; }
@@ -44,11 +44,10 @@ namespace Application.Repository
         public DbSet<BookType> booktypes { get;set;}
         public DbSet<Room> rooms { get; set; }
         public DbSet<PayrollDate> payrolldates { get; set; }
-       // public DbSet<Allowance> allowances { get; set; }
+        public DbSet<Allowance> allowances { get; set; }
+        public DbSet<AppUserRole> appuserroles { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
-
             
             modelBuilder.Entity<AppUser>()
                 .MapToStoredProcedures();
@@ -88,6 +87,9 @@ namespace Application.Repository
                 .MapToStoredProcedures();
 
             modelBuilder.Entity<PaymentHistory>()
+                .MapToStoredProcedures();
+
+            modelBuilder.Entity<Allowance>()
                 .MapToStoredProcedures();
 
             modelBuilder.Entity<PayrollAmount>()
@@ -165,6 +167,9 @@ namespace Application.Repository
                     .MapToStoredProcedures();
 
             modelBuilder.Entity<PayrollDate>()
+                    .MapToStoredProcedures();
+
+            modelBuilder.Entity<AppUserRole>()
                     .MapToStoredProcedures();
 
             base.OnModelCreating(modelBuilder);

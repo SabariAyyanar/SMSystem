@@ -48,6 +48,9 @@ namespace Application.Repository
         IEmployeeLevelOfEducationRepository employeelevelsofeducation { get; set; }
         ITaxRateRepository taxrates { get; set; }
         ISSNITRateRepository ssnitrates { get; set; }
+        IEmployeeDataCollectionsRepository employeedatacollections { get; set; }
+        IStudentDataCollectionsRepository studentdatacollections { get; set; }
+        IAppUserRoleRepository appuserroles { get; set; }
         int Complete();
     }
 }

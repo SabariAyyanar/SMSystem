@@ -1,159 +1,50 @@
 
   <div>
       <mat-toolbar color="primary" class="navholder">
-        <div>        
-            <mat-icon (click)="toggleSideNav()">list</mat-icon>
-      </div>
-
+          <div>        
+              <mat-icon (click)="toggleSideNav()">list</mat-icon>
+          </div>
             <!-- Main Top Menu items -->
             <div>
-              <button mat-raised-button color="accent" [matMenuTriggerFor]="entities">
-                ENTITIES
-              </button>
+                <a routerLink="/profile" class="navbar-left"><img src="../../../assets/images/default.png" class="img-circle">
+                </a>
+                  <span routerLink="/profile" class="small welcome-message">Welcome, </span>
+                   <span routerLink="/profile" class="title username">Christian</span>
             </div>
+  
+            <!--- Space for the menus -->
+            
             <div>
-              <button mat-raised-button color="accent" [matMenuTriggerFor]="menu">
-                ACTIONS
-              </button>
+            
             </div>
-            <div>
-              <button mat-raised-button color="accent" [matMenuTriggerFor]="settings">
-                SETTINGS
-              </button>
-            </div>
-            <div>
-              <button (click)="logoutUser()" mat-raised-button color="accent">
-                LOGOUT
-              </button>
+             <!--- End Space for the menus -->
+            <div class="right">
+             <a><mat-icon [matMenuTriggerFor]="entities">dashboard</mat-icon></a> 
             </div>
             <!--End Main Top Menu items -->
             
       </mat-toolbar>
-
+  
         <!-- Menu items for ENTITIES -->
           <mat-menu #entities="matMenu"> 
-            <a routerLink="/student">
-            <button mat-menu-item>
-                <mat-icon>voicemail</mat-icon>
-                <span>Students</span>
+            <a routerLink="/profile">
+              <button mat-menu-item>
+                  <mat-icon color="warn">face</mat-icon>
+                  <span>Profile</span>
+                </button>
+            </a>
+            <a routerLink="/user/account"> <button mat-menu-item>
+                <mat-icon color="warn">account_circle</mat-icon>
+                <span>Account</span>
               </button>
             </a>
-            <a routerLink="/employee"> <button mat-menu-item>
-              <mat-icon>settings</mat-icon>
-              <span>Employees</span>
-            </button>
-          </a>
-          </mat-menu>
-
-           <!--END Menu items for ENTITIES -->
-
-          <!-- Menu items for ACTIONS -->
-          <mat-menu #menu="matMenu"> 
-              <a routerLink="/report">
-                <button mat-menu-item>
-                    <mat-icon>notifications_off</mat-icon>
-                    <span>Reports</span>
-                  </button>
-                </a>
-
-                    <button mat-menu-item [matMenuTriggerFor]="subformonetary">
-                      <mat-icon>notifications_off</mat-icon>
-                      <span>Monetary</span>
-                    </button>
-
-                    <button mat-menu-item [matMenuTriggerFor]="subforassets">
-                        <mat-icon>notifications_off</mat-icon>
-                        <span>Assets</span>
-                      </button>
-
-                  <a routerLink="/examination">
-                    <button mat-menu-item>
-                        <mat-icon>notifications_off</mat-icon>
-                        <span>Examinations</span>
-                      </button>
-                    </a>
-          </mat-menu>
-
-          <!--- End of Menu Items for ACITIONS -->
-
-
-           <!-- Sub menu items for MONETARY in ACTIONS Item -->
-           <mat-menu #subformonetary="matMenu"> 
-              <a routerLink="/payroll">
-                <button mat-menu-item>
-                    <mat-icon>notifications_off</mat-icon>
-                    <span>Payroll</span>
-                  </button>
-                </a>
-
-                <a routerLink="/fees">
-                  <button mat-menu-item>
-                      <mat-icon>notifications_off</mat-icon>
-                      <span>Fees</span>
-                    </button>
-                  </a>
-
-                  <a routerLink="/income">
-                    <button mat-menu-item>
-                        <mat-icon>notifications_off</mat-icon>
-                        <span>Income</span>
-                      </button>
-                    </a>
-                    <a routerLink="/expense">
-                      <button mat-menu-item>
-                          <mat-icon>notifications_off</mat-icon>
-                          <span>Expense</span>
-                        </button>
-                      </a>
-          </mat-menu>
-
-          <!---END Sub menu items for ACTIONS in MENU Item -->
-
-           <!-- Sub menu items for ASSETS in ACTIONS Item -->
-           <mat-menu #subforassets="matMenu"> 
-              <a routerLink="/hostel">
-                <button mat-menu-item>
-                    <mat-icon>notifications_off</mat-icon>
-                    <span>Hostel</span>
-                  </button>
-                </a>
-
-                <a routerLink="/library">
-                  <button mat-menu-item>
-                      <mat-icon>notifications_off</mat-icon>
-                      <span>Library</span>
-                    </button>
-                  </a>
-
-                  <a routerLink="/transport">
-                    <button mat-menu-item>
-                        <mat-icon>notifications_off</mat-icon>
-                        <span>Transport</span>
-                      </button>
-                    </a>
-          </mat-menu>
-
-          <!--- End Sub menu items for ASSETS in ACTIONS Item -->
-
-          
-
-          <!-- Menu items for settings -->
-          <mat-menu #settings="matMenu">
-              <a routerLink="/setting"> 
-              <button mat-menu-item>
-                <mat-icon>settings</mat-icon>
-                <span>Entities</span>
+              <button (click)="logoutUser()" mat-menu-item>
+                <mat-icon color="warn">input</mat-icon>
+                <span>Logout</span>
               </button>
-              </a>
-              <button mat-menu-item>
-                  <mat-icon>voicemail</mat-icon>
-                  <span>Mail</span>
-                </button>
-                <button mat-menu-item>
-                    <mat-icon>notifications_off</mat-icon>
-                    <span>Examinations</span>
-                  </button>
-            </mat-menu>
-
-             <!--- End Menu items for settings-->
+          </mat-menu>
+  
+           <!--END Menu items for ENTITIES -->
+  
+         
     </div>
