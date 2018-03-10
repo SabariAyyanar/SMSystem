@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
 
   logoutUser(){
     localStorage.setItem('access_token','');
-    this.router.navigate(['/application']);
+    this.router.navigate(['/login']);
   }
 
 }

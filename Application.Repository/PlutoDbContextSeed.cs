@@ -20,20 +20,6 @@ namespace Application.Repository
 
             };
 
-            AppUserRole appuserrole1 = new AppUserRole
-            {
-                Id = 1,
-                role = "Admin",
-                description = "Administration of the school"
-            };
-
-            AppUserRole appuserrole2 = new AppUserRole
-            {
-                Id = 2,
-                role = "Teacher",
-                description = "Teaching staff of the school"
-            };
-
 
             Department department1 = new Department()
             {
@@ -272,33 +258,33 @@ namespace Application.Repository
             };
 
 
-            PayrollAmount payrollamount1 = new PayrollAmount()
-            {
-                Id = 1,
-                employeeId = 1,
-                enddate = DateTime.Now,
-                startdate = DateTime.Now,
-                expectedworkhours = 23,
-                grosssalary = 500,
-                netsalary = 450,
-                holiday = 23,
-                loan = 34,
-                payee = 3,
-                saturday = 3,
-                ssnit = 3,
-                totalallowance = 45,
-                workday = 34,
-                workdayovertime = 2,
-                sunday = 43,
-                saturdayovertime = 3,
-                sundayovertime = 3,
-                totalworkdays = 3,
-                holidayovertime = 4,
-                allowances = new List<Allowance>()
-                {
-                    allowance1,allowance2
-                }
-            };
+            //PayrollAmount payrollamount1 = new PayrollAmount()
+            //{
+            //    Id = 1,
+            //    employeeId = 1,
+            //    enddate = DateTime.Now,
+            //    startdate = DateTime.Now,
+            //    expectedworkhours = 23,
+            //    grosssalary = 500,
+            //    netsalary = 450,
+            //    holiday = 23,
+            //    loan = 34,
+            //    payee = 3,
+            //    saturday = 3,
+            //    ssnit = 3,
+            //    totalallowance = 45,
+            //    workday = 34,
+            //    workdayovertime = 2,
+            //    sunday = 43,
+            //    saturdayovertime = 3,
+            //    sundayovertime = 3,
+            //    totalworkdays = 3,
+            //    holidayovertime = 4,
+            //    allowances = new List<Allowance>()
+            //    {
+            //        allowance1,allowance2
+            //    }
+            //};
 
 
             EmployeeLoan employeeloan1 = new EmployeeLoan()
@@ -353,52 +339,10 @@ namespace Application.Repository
                 name = "Second Expense"
             };
 
-            StudentDataCollections studentdatacollections1 = new StudentDataCollections
-            {
-                Id = 1,Name="FirstName",Description = "First Name of Student"
-            };
-
-            StudentDataCollections studentdatacollections2 = new StudentDataCollections
-            {
-                Id = 2,
-                Name = "Location",
-                Description = "Location of Student"
-            };
-
-            StudentDataCollections studentdatacollections3 = new StudentDataCollections
-            {
-                Id = 3,
-                Name = "Class",
-                Description = "Class Of Student of Student"
-            };
-
-            EmployeeDataCollections employeedatacollections1 = new EmployeeDataCollections
-            {
-                Id = 1,
-                Name = "FirstName",
-                Description = "First Name of Employee"
-            };
-
-            EmployeeDataCollections employeedatacollections2 = new EmployeeDataCollections
-            {
-                Id = 2,
-                Name = "Location",
-                Description = "Location Of  Employee"
-            };
-
-            EmployeeDataCollections employeedatacollections3 = new EmployeeDataCollections
-            {
-                Id = 3,
-                Name = "Category",
-                Description = "Category of Employee"
-            };
-
 
 
 
             context.appusers.Add(appuser1);
-            context.appuserroles.Add(appuserrole1);
-            context.appuserroles.Add(appuserrole2);
             context.employeetypes.Add(employeetype1);
             context.employeetypes.Add(employeetype2);
             context.studentsubjects.Add(subject1);
@@ -421,9 +365,9 @@ namespace Application.Repository
             context.students.Add(student2);
             context.payrollallowances.Add(payrollallowance1);
             context.payrollallowances.Add(payrollallowance2);
-            context.allowances.Add(allowance1);
-            context.allowances.Add(allowance2);
-            context.payrollamounts.Add(payrollamount1);
+            //context.payrollamounts.Add(payrollamount1);
+            //context.allowances.Add(allowance1);
+            //context.allowances.Add(allowance2);
             context.payrollrates.Add(payrollrate);
             context.taxrates.Add(taxrate1);
             context.taxrates.Add(taxrate2);

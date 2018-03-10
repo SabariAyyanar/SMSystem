@@ -27,7 +27,7 @@ namespace Application.User.Authentication
             {
                 if (loginUser.alterEgo.ToUpper() == "ADMIN")
                 {
-                    identity.AddClaim(new Claim(ClaimTypes.Role, unitOfWork.appuserroles.Get(1).role));
+                    identity.AddClaim(new Claim(ClaimTypes.Role, "admin"));
                     identity.AddClaim(new Claim("username", loginUser.username));
                     identity.AddClaim(new Claim(ClaimTypes.Name, loginUser.username));
                     context.Validated(identity);

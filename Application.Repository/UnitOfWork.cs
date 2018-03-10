@@ -13,9 +13,9 @@ namespace Application.Repository
         private ILog _ILog;
         public UnitOfWork(PlutoContext context)
         {
-                _ILog = Log.GetInstance;
+            _ILog = Log.GetInstance;
 
-                _context = context;
+            _context = context;
                 AppUsers = new UserRepository(context);
                 Students = new StudentRepository(context);
                 PaymentHistories = new PaymentHistoryRepository(context);
@@ -53,14 +53,7 @@ namespace Application.Repository
                 rooms = new RoomRepository(context);
                 payrolldates = new PayrollDateRepository(context);
                 allowances = new AllowanceRepository(context);
-                studentdatacollections = new StudentDataCollectionsRepository(context);
-                employeedatacollections = new EmployeeDataCollectionsRepository(context);
-                appuserroles = new AppUserRoleRepository(context);
-
         }
-        public IAppUserRoleRepository appuserroles { get; set; }
-        public IStudentDataCollectionsRepository studentdatacollections { get; set; }
-        public IEmployeeDataCollectionsRepository employeedatacollections { get; set; }
         public IAllowanceRepository allowances { get; set; }
         public IPayrollDateRepository payrolldates { get; set; }
         public IRoomRepository rooms { get; set; }

@@ -22,8 +22,7 @@
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.css",
         "../src/assets/styles/materialicon.css",
-        "../src/assets/styles/robotocss.css",
-        "../node_modules/@progress/kendo-theme-default/dist/all.css"],
+        "../src/assets/styles/robotocss.css","../node_modules/@progress/kendo-theme-default/dist/all.css"],
       "scripts": [
       ],
       "environmentSource": "environments/environment.ts",

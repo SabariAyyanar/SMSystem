@@ -1,0 +1,103 @@
+$buttoncolor: #03a9fa;
+$loginbutton: #5fba7d ;
+
+button[type="submit"]{
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    color: #fff !important;
+    border-radius: 0;
+    background: $loginbutton !important;
+    padding: 10px 20px !important;
+    cursor: pointer !important;
+}
+
+
+#main{
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: url(../../assets/images/loginbackground.jpg);
+    background-size: cover;
+
+    #register{
+        width: 400px;
+        padding: 40px; 
+        background: rgba(0,0,0,.8);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.5);
+
+        h2{
+            color: #fff;
+            text-align: center;
+        }
+
+        .ng-valid[required], .ng-valid.required  {
+            border-left: 5px solid #42A948; /* green */
+          }
+          
+          .ng-invalid:not(form)  {
+            border-left: 5px solid #a94442; /* red */
+          }
+
+        .inputBox{
+            position: relative;
+
+           
+
+            input{
+                width: 100%;
+                font-size: 15px;
+                letter-spacing: 1px;
+                padding: 5px 0;
+                color: white;
+                margin-bottom: 20px;
+                border:none;
+                border-bottom: 1px solid #fff;
+                outline: none;
+                background: transparent;
+            }
+
+            label{
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size: 13px;
+                padding: 5px 0;
+                color: white;
+                pointer-events: none;
+                transition: .1s;
+            }
+
+            
+            input:focus ~label,
+            input:valid ~label{
+                top:-18px;
+                left: 0;
+                color:$buttoncolor;
+                font-size: 12px;
+            }
+            input:not([type='text']):invalid ~label{
+                top:-18px;
+                left: 0;
+                color:$buttoncolor;
+                font-size: 14px;
+            }
+
+           
+
+            
+        }
+        input[type="submit"]
+        {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            background:$buttoncolor;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    }
+}

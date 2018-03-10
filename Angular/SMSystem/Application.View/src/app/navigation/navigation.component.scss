@@ -1,32 +1,7 @@
 .navholder{
     display: flex;
-    img{
-        height: 50px;
-        border-radius: 50%;
-    }
-    
-    @media(max-width:768px) {
-        img{
-            display: none;
-        }
-    }
 }
 
 .navholder div{
     flex:1;
-    &.right{
-        position: absolute;
-        right: 50px;
-    }
-    
-    span {
-    &.username,&.welcome-message{
-        cursor: pointer;
-    }
-        @media(max-width:768px) {
-            &.username,&.welcome-message{
-                display: none;
-            }
-        }
-    }
 }

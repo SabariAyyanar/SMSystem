@@ -1,39 +1,6 @@
 <mat-accordion>
 
-<!-- BEGIN APPLICATION PANEL-->
-<mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-           <span mat-icon-button>
-             <mat-icon color="warn">
-               nature_people
-             </mat-icon>
-              Application
-          </span> 
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-            <div>
-                    <a mat-icon-button routerLink="/application/dashboard">
-                    <mat-icon color="primary">
-                        favorite
-                    </mat-icon>
-                    Dashboard
-                </a>
-            </div>
-            <div>
-                    <a mat-icon-button routerLink="/application/users">
-                    <mat-icon color="primary">
-                        favorite
-                    </mat-icon>
-                    Users
-                </a>
-            </div>
-      </mat-expansion-panel>
-  
-      <!-- END APPLICATION PANEL -->
-
-
-  <!-- BEGIN STUDENTS PANEL  -->
+  <!-- first panel for ENTITIES -->
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -41,185 +8,64 @@
            <mat-icon color="warn">
              nature_people
            </mat-icon>
-            Students
+            Entities
         </span> 
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-      <a mat-icon-button routerLink="/entities/student">
+      <a mat-icon-button>
             <mat-icon color="primary">
                 favorite
             </mat-icon>
-            Student
+            Students
         </a>
     </div>
         <div class="link-item">
-        <a mat-icon-button routerLink="/entities/studentattendance">
+        <a mat-icon-button>
                 <mat-icon color="primary">
                     favorite
                 </mat-icon>
-                Attendance
+                Employees
             </a>
         </div>
-        <div class="link-item" routerLink="/entities/studentfeeding">
-            <a mat-icon-button>
-                    <mat-icon color="primary">
-                        favorite
-                    </mat-icon>
-                    Feeding
-                </a>
-        </div>
-        <div class="link-item" routerLink="/entities/studentexamination">
-            <a mat-icon-button>
-                    <mat-icon color="primary">
-                        favorite
-                    </mat-icon>
-                    Examination
-                </a>
-            </div>
     </mat-expansion-panel>
 
-    <!-- END STUDENTS PANEL-->
+    <!-- end first panel for ENTITIES -->
 
-
-    <!-- BEGIN EMPLOYEE PANEL  -->
-    <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-           <span mat-icon-button>
-             <mat-icon color="warn">
-               nature_people
-             </mat-icon>
-              Employees
-          </span> 
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div>
-        <a mat-icon-button routerLink="/entities/employee">
-              <mat-icon color="primary">
-                  favorite
-              </mat-icon>
-              employee
-          </a>
-      </div>
-      <div>
-        <a mat-icon-button routerLink="/entities/employeeattendance">
-              <mat-icon color="primary">
-                  favorite
-              </mat-icon>
-              attendance
-          </a>
-      </div>
-          <div class="link-item" routerLink="/entities/employeefeeding">
-          <a mat-icon-button>
-                  <mat-icon color="primary">
-                      favorite
-                  </mat-icon>
-                  feeding
-              </a>
-          </div>
-      </mat-expansion-panel>
-  
-      <!-- END EMPLOYEE PANEL-->
-
-    <!-- BEGIN MONETARY PANEL -->
-    <mat-expansion-panel>
+    <!-- second panel for MONETARY -->
+    <mat-expansion-panel 
+                        >
       <mat-expansion-panel-header>
         <mat-panel-title>
             <span mat-icon-button>
                 <mat-icon color="warn">
                   attach_money
                 </mat-icon>
-                 Monetary
+                 MONETARY
              </span>
         </mat-panel-title>
       </mat-expansion-panel-header>
-            <div>
-                <a mat-icon-button routerLink="/monetary/expense">
+      <div>
+          <a mat-icon-button>
+                <mat-icon color="primary">
+                    favorite
+                </mat-icon>
+                Students
+            </a>
+        </div>
+            <div class="link-item">
+            <a mat-icon-button>
                     <mat-icon color="primary">
                         favorite
                     </mat-icon>
-                    Expense
+                    Employees
                 </a>
             </div>
-            <div class="link-item" routerLink="/monetary/fees">
-                <a mat-icon-button>
-                    <mat-icon color="primary">
-                        favorite
-                    </mat-icon>
-                    Fees
-                </a>
-            </div>
-                <div class="link-item" routerLink="/monetary/income">
-                    <a mat-icon-button>
-                            <mat-icon color="primary">
-                                favorite
-                            </mat-icon>
-                            Income
-                    </a>
-                </div>
-                <div class="link-item" routerLink="/monetary/loan">
-                    <a mat-icon-button>
-                            <mat-icon color="primary">
-                                favorite
-                            </mat-icon>
-                            Loan
-                    </a>
-                </div>
-                <div class="link-item" routerLink="/monetary/payroll">
-                        <a mat-icon-button>
-                                <mat-icon color="primary">
-                                    favorite
-                                </mat-icon>
-                                Payroll
-                        </a>
-                </div>
     </mat-expansion-panel>
 
-    <!-- END MONETARY PANEL -->
+    <!-- end of second panel for MONETARY -->
 
-
-    <!-- BEGIN ASSETS PANEL-->
-  <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                <span mat-icon-button>
-                    <mat-icon color="warn">
-                      multiline_chart
-                    </mat-icon>
-                     Assets
-                 </span>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div>
-              <a mat-icon-button routerLink="/assets/hostel">
-                    <mat-icon color="primary">
-                        favorite
-                    </mat-icon>
-                    Hostel
-                </a>
-            </div>
-                <div class="link-item" routerLink="/assets/library">
-                    <a mat-icon-button>
-                        <mat-icon color="primary">
-                            favorite
-                        </mat-icon>
-                        Library
-                    </a>
-                </div>
-                <div class="link-item" routerLink="/assets/transport">
-                        <a mat-icon-button>
-                            <mat-icon color="primary">
-                                favorite
-                            </mat-icon>
-                            Transport
-                        </a>
-                </div>
-  </mat-expansion-panel>
-  
-  <!-- END ASSETS PANEL-->
-
-    <!-- BEGIN SUMMARY PANEL-->
+    <!-- third panel for REPORTS -->
   <mat-expansion-panel>
       <mat-expansion-panel-header>
           <mat-panel-title>
@@ -227,23 +73,31 @@
                   <mat-icon color="warn">
                     multiline_chart
                   </mat-icon>
-                   Summary
+                   REPORTS
                </span>
           </mat-panel-title>
         </mat-expansion-panel-header>
         <div>
-            <a mat-icon-button routerLink="/summary/reports">
+            <a mat-icon-button>
                   <mat-icon color="primary">
                       favorite
                   </mat-icon>
-                  Reports
+                  Students
               </a>
           </div>
+              <div class="link-item">
+              <a mat-icon-button>
+                      <mat-icon color="primary">
+                          favorite
+                      </mat-icon>
+                      Employees
+                  </a>
+              </div>
 </mat-expansion-panel>
 
-<!-- END SUMMARY PANEL-->
+<!-- end of third panel for REPORTS -->
 
- <!-- BEGIN SETTINGS PANEL-->
+ <!-- fourth panel for SETTINGS -->
  <mat-expansion-panel>
     <mat-expansion-panel-header>
         <mat-panel-title>
@@ -251,60 +105,27 @@
                 <mat-icon color="warn">
                   settings
                 </mat-icon>
-                 Settings
+                 SETTINGS
              </span>
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-        <a mat-icon-button routerLink="/settings/employee">
-            <mat-icon color="primary">
-                favorite
-            </mat-icon>
-            Employees
-        </a>
-    </div>
-
-    <div>
-    <a mat-icon-button routerLink="/settings/student">
-            <mat-icon color="primary">
-                favorite
-            </mat-icon>
-            Students
-    </a>
-    </div>
-    <div>
-        <a mat-icon-button routerLink="/settings/examination">
+          <a mat-icon-button>
                 <mat-icon color="primary">
                     favorite
                 </mat-icon>
-                Examinations
+                Students
             </a>
-    </div>
-    <div>
-        <a mat-icon-button routerLink="/settings/general">
-                <mat-icon color="primary">
-                    favorite
-                </mat-icon>
-                General
-        </a>
-    </div>
-    <div>
-        <a mat-icon-button routerLink="/settings/notification">
-                <mat-icon color="primary">
-                    favorite
-                </mat-icon>
-                Notifications
-        </a>
-    </div>
-    <div>
-        <a mat-icon-button routerLink="/settings/payroll">
-                <mat-icon color="primary">
-                    favorite
-                </mat-icon>
-                Payroll
-        </a>
-    </div>
+        </div>
+            <div class="link-item">
+            <a mat-icon-button>
+                    <mat-icon color="primary">
+                        favorite
+                    </mat-icon>
+                    Employees
+                </a>
+            </div>
 </mat-expansion-panel>
 
-<!-- END SETTINGS PANEL-->
+<!-- end of fourth panel for SETTINGS -->
   </mat-accordion>
